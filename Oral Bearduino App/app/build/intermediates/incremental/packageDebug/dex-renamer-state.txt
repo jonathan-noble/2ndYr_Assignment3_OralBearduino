@@ -1,7 +1,0 @@
-#Tue Mar 21 00:17:08 GMT 2017
-base.0=C\:\\Users\\Butan\\Documents\\Code\\RoboBearduino\\App\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_5d7fc9230a122d01092a988ea898435f41c3823b
-renamed.1=classes.dex
-renamed.0=classes2.dex
-file.1=C\:\\Users\\Butan\\Documents\\Code\\RoboBearduino\\App\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_591cb7b4f7e5f33afd3d1fd96368f92730b846ea\\classes.dex
-base.1=C\:\\Users\\Butan\\Documents\\Code\\RoboBearduino\\App\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_591cb7b4f7e5f33afd3d1fd96368f92730b846ea
-file.0=C\:\\Users\\Butan\\Documents\\Code\\RoboBearduino\\App\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_5d7fc9230a122d01092a988ea898435f41c3823b\\classes.dex
