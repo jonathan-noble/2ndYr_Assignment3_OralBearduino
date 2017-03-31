@@ -12,15 +12,13 @@
 
 
     <Button
-        android:id="@+id/button_play"
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="61dp"
         android:text="Play"
-        android:onClick="playMusic"
-        />
-
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="187dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
