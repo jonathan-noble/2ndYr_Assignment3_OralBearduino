@@ -19,6 +19,7 @@
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="187dp"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="PlayOn" />
 
 </RelativeLayout>
