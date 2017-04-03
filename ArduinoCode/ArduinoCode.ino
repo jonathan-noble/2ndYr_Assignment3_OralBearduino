@@ -17,7 +17,7 @@ void loop()
 
 
   //While sensor is not moving, analog pin receive 1023~1024 value
-  if (sensor<1024){
+  if (sensor>1024){
     tone(buzzer, 500);
     Serial.print("Sensor Value: ");
     Serial.println(sensor);
