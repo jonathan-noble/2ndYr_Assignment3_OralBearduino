@@ -9,6 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.media.MediaPlayer;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Button;
 
 
 
