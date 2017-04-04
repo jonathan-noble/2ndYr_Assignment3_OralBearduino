@@ -11,8 +11,6 @@ import android.view.View;
 import android.media.MediaPlayer;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-
 
 
 public class AudioActivity extends AppCompatActivity {
@@ -27,6 +25,23 @@ public class AudioActivity extends AppCompatActivity {
         MediaPlayer player = MediaPlayer.create(this, R.raw.shooting_stars);
         player.start();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.audio, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
 
 }
