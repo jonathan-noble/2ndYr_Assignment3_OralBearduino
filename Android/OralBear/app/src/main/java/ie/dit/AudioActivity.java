@@ -22,7 +22,7 @@ public class AudioActivity extends AppCompatActivity {
     }
 
     public void PlayAudio(View v) {
-        MediaPlayer player = MediaPlayer.create(this, R.raw.shooting_stars);
+        MediaPlayer player = MediaPlayer.create(this, R.raw.mirror_maru);
         player.start();
     }
 

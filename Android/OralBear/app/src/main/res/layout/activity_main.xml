@@ -19,8 +19,7 @@
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="187dp"
         android:onClick="ListenAudio"
-        android:layout_marginTop="107dp"
-        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

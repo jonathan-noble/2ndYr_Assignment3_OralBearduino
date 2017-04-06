@@ -24,7 +24,7 @@
 
         <activity
             android:name="ie.dit.AudioActivity"
-            android:label="AudioActivity"
+            android:label="Playlist"
             android:parentActivityName="ie.dit.MainActivity">
         </activity>
 
