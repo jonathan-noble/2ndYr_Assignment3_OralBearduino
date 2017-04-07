@@ -18,12 +18,14 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity {
 
    // MediaPlayer mySound;
-
+    View view;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        view=this.getWindow().getDecorView();
+        view.setBackgroundResource(R.color.gray);
     }
 
     public void ListenAudio(View v) {
