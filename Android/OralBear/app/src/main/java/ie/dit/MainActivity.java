@@ -29,6 +29,26 @@ public class MainActivity extends AppCompatActivity {
         view=this.getWindow().getDecorView();
         view.setBackgroundResource(R.color.gray);
     }
+//code so when button is clicked these methods will be executed
+    public void goRED(View v)
+    {
+
+        view.setBackgroundResource(R.color.red);
+    }
+
+    public void goBLUE(View v)
+    {
+
+        view.setBackgroundResource(R.color.blue);
+
+    }
+
+    public void goYELLOW(View v)
+    {
+        view.setBackgroundResource(R.color.yellow);
+
+
+    }
 
     public void ListenAudio(View v) {
 
