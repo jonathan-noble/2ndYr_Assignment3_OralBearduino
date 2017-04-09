@@ -5,13 +5,14 @@ package ie.dit;
  * buttons/background color created by pia
  */
 
+//import android.content.SharedPreferences;
+//import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-
 //import android.media.AudioManager;
 //import android.media.MediaPlayer;
 
@@ -20,7 +21,9 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity {
 
    // MediaPlayer mySound;
+   //  SharedPreferences sharedPref;
     View view;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,27 +31,38 @@ public class MainActivity extends AppCompatActivity {
 
         view=this.getWindow().getDecorView();
         view.setBackgroundResource(R.color.gray);
+
+       // sharedPref= PreferenceManager.getDefaultSharedPreferences(this);
+
     }
+
 //code so when button is clicked these methods will be executed
     public void goRED(View v)
     {
 
         view.setBackgroundResource(R.color.red);
+        Intent intent = new Intent(this, AudioActivity.class);
+        intent.putExtra("Red", R.color.red);
+        startActivity(intent);
     }
 
     public void goBLUE(View v)
     {
 
         view.setBackgroundResource(R.color.blue);
-
+//        Intent intent = new Intent(this, AudioActivity.class);
+//        intent.putExtra("Blue", R.color.blue);
+//        startActivity(intent);
     }
 
     public void goYELLOW(View v)
     {
         view.setBackgroundResource(R.color.yellow);
-
-
+//        Intent intent = new Intent(this, AudioActivity.class);
+//        intent.putExtra("Yellow", R.color.yellow);
+//        startActivity(intent);
     }
+
 
     public void ListenAudio(View v) {
 
