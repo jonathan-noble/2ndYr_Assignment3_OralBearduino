@@ -24,14 +24,21 @@ public class MainActivity extends AppCompatActivity {
    // MediaPlayer mySound;
    //  SharedPreferences sharedPref;
     View view;
+
+    //created object for color picker buttons
     private Button redBtn, blueBtn, yellowBtn;
     @Override
+
+    //its like void setup()--stndrd default
     protected void onCreate(Bundle savedInstanceState) {
+        //i think calling all methods on savedinstances
         super.onCreate(savedInstanceState);
+        //calling layout
         setContentView(R.layout.activity_main);
 
        // sharedPref= PreferenceManager.getDefaultSharedPreferences(this);
 
+        //initialised buttons
         redBtn = (Button) findViewById(R.id.button_red);
         blueBtn = (Button) findViewById(R.id.button_blue);
         yellowBtn = (Button) findViewById(R.id.button_yellow);
