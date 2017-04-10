@@ -8,6 +8,7 @@
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
+                android:background="@color/gray"
                 tools:context="ie.dit.MainActivity">
 
 
@@ -23,8 +24,8 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:id="@+id/buttonRed"
-        android:onClick="goRED"
+        android:id="@+id/button_red"
+        android:onClick="onButtonClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="RED"
@@ -35,18 +36,18 @@
         android:layout_alignParentStart="true" />
 
     <Button
-        android:id="@+id/button3"
-        android:onClick="goBLUE"
+        android:id="@+id/button_blue"
+        android:onClick="onButtonClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Blue"
+        android:text="BLUE"
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/button"
         android:layout_alignStart="@+id/button" />
 
     <Button
-        android:id="@+id/button4"
-        android:onClick="goYELLOW"
+        android:id="@+id/button_yellow"
+        android:onClick="onButtonClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="YELLOW"

@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 //import android.media.AudioManager;
 //import android.media.MediaPlayer;
 
@@ -23,44 +24,43 @@ public class MainActivity extends AppCompatActivity {
    // MediaPlayer mySound;
    //  SharedPreferences sharedPref;
     View view;
-
+    private Button redBtn, blueBtn, yellowBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        view=this.getWindow().getDecorView();
-        view.setBackgroundResource(R.color.gray);
-
        // sharedPref= PreferenceManager.getDefaultSharedPreferences(this);
 
+        redBtn = (Button) findViewById(R.id.button_red);
+        blueBtn = (Button) findViewById(R.id.button_blue);
+        yellowBtn = (Button) findViewById(R.id.button_yellow);
+
+        redBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onButtonClick(R.color.red);
+            }
+        });
+        blueBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onButtonClick(R.color.blue);
+            }
+        });
+        yellowBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onButtonClick(R.color.yellow);
+            }
+        });
     }
 
 //code so when button is clicked these methods will be executed
-    public void goRED(View v)
-    {
-
-        view.setBackgroundResource(R.color.red);
+    private void onButtonClick(int color){
         Intent intent = new Intent(this, AudioActivity.class);
-        intent.putExtra("Red", R.color.red);
+        intent.putExtra("background",color);
         startActivity(intent);
-    }
-
-    public void goBLUE(View v)
-    {
-
-        view.setBackgroundResource(R.color.blue);
-//        Intent intent = new Intent(this, AudioActivity.class);
-//        intent.putExtra("Blue", R.color.blue);
-//        startActivity(intent);
-    }
-
-    public void goYELLOW(View v)
-    {
-        view.setBackgroundResource(R.color.yellow);
-//        Intent intent = new Intent(this, AudioActivity.class);
-//        intent.putExtra("Yellow", R.color.yellow);
-//        startActivity(intent);
     }
 
 

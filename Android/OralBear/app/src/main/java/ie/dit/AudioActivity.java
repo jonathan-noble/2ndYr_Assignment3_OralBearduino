@@ -24,20 +24,16 @@ public class AudioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_audio);
 
-        view=this.getWindow().getDecorView();
-        view.setBackgroundResource(R.color.gray);
+//        view=this.getWindow().getDecorView();
+//        view.setBackgroundResource(R.color.gray);
 
-        int redBG = getIntent().getIntExtra("Red", -1);
-        RelativeLayout rootView1 = (RelativeLayout)findViewById(R.id.activity_audio);
-        rootView1.setBackgroundResource(redBG);
 
-//        int blueBG = getIntent().getIntExtra("Blue", -1);
-//        RelativeLayout rootView2 = (RelativeLayout)findViewById(R.id.activity_audio);
-//        rootView2.setBackgroundResource(blueBG);
-//
-//        int yellowBG = getIntent().getIntExtra("Yellow", -1);
-//        RelativeLayout rootView3 = (RelativeLayout)findViewById(R.id.activity_audio);
-//        rootView3.setBackgroundResource(yellowBG);
+
+        int color = getIntent().getIntExtra("background", -1);
+        if(color != -1) {
+            RelativeLayout rootView = (RelativeLayout) findViewById(R.id.activity_audio);
+            rootView.setBackgroundResource(color);
+        }
     }
 
 
