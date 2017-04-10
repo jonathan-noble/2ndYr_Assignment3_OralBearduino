@@ -103,19 +103,7 @@ void setup() {
   tft.setRotation(0);
   tft.fillScreen(BLACK);
   
-  // create buttons
-  for (uint8_t row=0; row<3; row++) {
-    
-    for (uint8_t col=0; col<1; col++) {
-                                              //initButton(&MCU, x, y, w, h, outline, fill, text)
-      buttons[col + row * 3].initButton(&tft, BUTTON_X + col * (BUTTON_W + BUTTON_SPACING_X), 
-                 BUTTON_Y + row * (BUTTON_H + BUTTON_SPACING_Y),   
-                 BUTTON_W, BUTTON_H, WHITE, btncolors[col+row*3], WHITE,
-                 btnlabels[col + row * 3], BUTTON_TEXTSIZE); 
-                 
-      buttons[col + row * 3].drawButton();
-    }
-  }
+  homeScreen();
  
 }
 
@@ -148,6 +136,26 @@ void loop() {
   
       delay(100); // UI debouncing
   
+}
+
+void homeScreen() {
+  
+// create buttons
+  for (uint8_t row=0; row<3; row++) {
+    
+    for (uint8_t col=0; col<1; col++) {
+                                              //initButton(&MCU, x, y, w, h, outline, fill, text)
+      buttons[col + row * 3].initButton(&tft, BUTTON_X + col * (BUTTON_W + BUTTON_SPACING_X), 
+                 BUTTON_Y + row * (BUTTON_H + BUTTON_SPACING_Y),   
+                 BUTTON_W, BUTTON_H, WHITE, btncolors[col+row*3], WHITE,
+                 btnlabels[col + row * 3], BUTTON_TEXTSIZE); 
+                 
+      buttons[col + row * 3].drawButton();
+    }
   }
+}
+
+  
+
   
 
