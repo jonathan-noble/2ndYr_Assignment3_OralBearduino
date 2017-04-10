@@ -100,13 +100,15 @@ void setup() {
   }
 
   tft.begin(identifier);
-  tft.setRotation(0);
+  tft.setRotation(1);
   tft.fillScreen(BLACK);
 
   //Draw white frame
-  tft.drawRect(0,0,240,320,WHITE);
+  //tft.drawRect(0,0,240,320,WHITE);  //if setRotation(0)
+  tft.drawRect(0,0,319,240,WHITE);
+
+  welcomeScreen();
   
-  homeScreen();
  
 }
 
@@ -137,15 +139,35 @@ void loop() {
     }
   }
   
+   // menuScreen();
       delay(100); // UI debouncing
   
 }
 
 void welcomeScreen() {
+  //Print "Hello" Text
+  tft.setCursor(100,30);
+  tft.setTextColor(WHITE);
+  tft.setTextSize(4);
+  tft.print("Hello");
+  
+  //Print "Master!" text 
+  tft.setCursor(80,100);
+  tft.setTextColor(RED);
+  tft.setTextSize(4);
+  tft.print("Master!");
+  
+  //Create Red Button
+  tft.fillRect(60,180, 200, 40, RED);
+  tft.drawRect(60,180,200,40, WHITE);
+  tft.setCursor(70,188);
+  tft.setTextColor(WHITE);
+  tft.setTextSize(3);
+  tft.print("START MENU");
 
 }
 
-void homeScreen() {
+void menuScreen() {
   
 // create buttons
   for (uint8_t row=0; row<3; row++) {
