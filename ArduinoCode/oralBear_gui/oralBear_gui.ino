@@ -102,6 +102,9 @@ void setup() {
   tft.begin(identifier);
   tft.setRotation(0);
   tft.fillScreen(BLACK);
+
+  //Draw white frame
+  tft.drawRect(0,0,240,320,WHITE);
   
   homeScreen();
  
@@ -136,6 +139,10 @@ void loop() {
   
       delay(100); // UI debouncing
   
+}
+
+void welcomeScreen() {
+
 }
 
 void homeScreen() {
