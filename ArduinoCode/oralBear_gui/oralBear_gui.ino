@@ -78,7 +78,7 @@ Adafruit_GFX_Button buttons[15];
 
 char btnlabels[15][5] = {"Game", "", "", "Timer", "", "", "Guide" , "", "", "", "", "", "", "", "" };
 uint16_t btncolors[3] = {DARKGREEN, CYAN, ORANGE};
-boolean buttonEnabled = true;
+char currentPage = '1';
 
 void setup() {
   Serial.begin(9600);
@@ -122,17 +122,20 @@ void setup() {
   tft.drawRect(0, 0, 319, 240, WHITE);
 
   welcomeScreen();
+  currentPage = '1';
 
 }
 
 #define MINPRESSURE 0
 #define MAXPRESSURE 1000
+boolean welcomeBtn = true;
+boolean backBtn = true;
 
 void loop() {
-  digitalWrite(13, HIGH);
-  TSPoint p = ts.getPoint();
-  digitalWrite(13, LOW);
 
+  digitalWrite(13, HIGH);
+  digitalWrite(13, LOW);
+  TSPoint p = ts.getPoint();
   pinMode(XM, OUTPUT);
   pinMode(YP, OUTPUT);
 
@@ -143,23 +146,34 @@ void loop() {
     p.x = map(p.x, TS_MAXX, TS_MINX, 0, 320);
     p.y = map(p.y, TS_MAXY, TS_MINY, 0, 240);
 
-    if (p.x > 60 && p.x < 260 && p.y > 180 && p.y < 220 && buttonEnabled) // The user has pressed inside the red rectangle
-    {
-      buttonEnabled = false; //Disable button
-      menuScreen();
-    }
+    if (currentPage = '1') {
+      if (p.x > 60 && p.x < 260 && p.y > 180 && p.y < 220 && welcomeBtn) // The user has pressed inside the red rectangle
+      {
+        welcomeBtn = false; //Disable button
+        currentPage = '2';
+        menuScreen();
+      }
 
-    // this code goes through all the buttons to error-check its functionality
-    for (uint8_t b = 0; b < 15; b++) {
-      if (buttons[b].contains(p.x, p.y)) {
-        Serial.print("Pressing: "); Serial.println(b);
-        buttons[b].press(true);  // tell the button it is pressed
-      } else {
-        buttons[b].press(false);  // tell the button it is NOT pressed
+    if (currentPage = '2') { 
+      if (p.x > 80 && p.x < 235 && p.y > 25 && p.y < 75 && backBtn) // The user has pressed inside the red rectangle
+      {
+        backBtn = false; //Disable button
+        setup();
       }
     }
-    delay(10); // UI debouncing
   }
+
+  // this code goes through all the buttons to error-check its functionality
+  for (uint8_t b = 0; b < 15; b++) {
+    if (buttons[b].contains(p.x, p.y)) {
+      Serial.print("Pressing: "); Serial.println(b);
+      buttons[b].press(true);  // tell the button it is pressed
+    } else {
+      buttons[b].press(false);  // tell the button it is NOT pressed
+    }
+  }
+  delay(10); // UI debouncing
+}
 
 }
 
@@ -206,6 +220,21 @@ void menuScreen() {
       buttons[col + row * 3].drawButton();
     }
   }
+
+  tft.drawRect(80, 25, 155, 50, RED);
+}
+
+void gameScreen() {
+  //Erase the screen
+  tft.fillScreen(BLACK);
+
+  //Draw frame
+  tft.drawRect(0, 0, 319, 240, WHITE);
+
+  tft.setCursor(100, 30);
+  tft.setTextColor(WHITE);
+  tft.setTextSize(4);
+  tft.print("Hello");
 }
 
 
