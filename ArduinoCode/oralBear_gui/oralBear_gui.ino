@@ -140,31 +140,40 @@ void loop() {
     p.y = map(p.y, TS_MAXY, TS_MINY, 0, 240);
 
     //Welcome Screen
-    if (currentPage = 1) {
+    if (currentPage == 1) {
       if (p.x > 60 && p.x < 260 && p.y > 180 && p.y < 220) // The user has pressed inside the red rectangle
       {
         currentPage = 2;
         menuScreen();
       }
-
-      //Start Menu Screen
-      if (currentPage = 2) {
-        if (p.x > 80 && p.x < 235 && p.y > 25 && p.y < 75)
-        {
-          currentPage = 3;
-          timerScreen();
-        }
-      }
-
-      if (currentPage = 3) {
-        if (p.x > 80 && p.x < 235 && p.y > 75 && p.y < 150)
-        {
-          currentPage = 2;
-          menuScreen();
-        }
-      }
-
     }
+
+    //Start Menu Screen
+    if (currentPage == 2) {
+      //Back Button
+      if (p.x > 15 && p.x < 55 && p.y > 20 && p.y < 70)
+      {
+        currentPage = 1;
+        welcomeScreen();
+      }
+      //Timer Button
+      if (p.x > 80 && p.x < 235 && p.y > 20 && p.y < 70)
+      {
+        currentPage = 3;
+        timerScreen();
+      }
+    }
+
+    //Timer Screen
+    if (currentPage == 3) {
+      //Back Button
+      if (p.x > 15 && p.x < 55 && p.y > 20 && p.y < 70)
+      {
+        currentPage = 2;
+        menuScreen();
+      }
+    }
+
 
     // this code goes through all the buttons to error-check its functionality
     for (uint8_t b = 0; b < 15; b++) {
@@ -224,11 +233,18 @@ void menuScreen() {
   //    }
   //  }
 
-  tft.fillRect(80, 25, 155, 50, ORANGE);
-  tft.drawRect(80, 25, 155, 50, WHITE);
-  tft.setCursor(82, 27);
-  tft.setTextColor(WHITE);
-  tft.setTextSize(2);
+  tft.fillRect(15, 20, 40, 30, PURPLE);
+  tft.drawRect(15, 20, 40, 30, WHITE);
+  tft.setCursor(23, 27);
+  tft.setTextColor(BLACK);
+  tft.setTextSize(2.5);
+  tft.print("<-");
+
+  tft.fillRect(80, 20, 155, 50, ORANGE);
+  tft.drawRect(80, 20, 155, 50, WHITE);
+  tft.setCursor(98, 27);
+  tft.setTextColor(BLACK);
+  tft.setTextSize(4);
   tft.print("Timer");
 }
 
@@ -236,11 +252,11 @@ void timerScreen() {
   tft.fillScreen(BLACK);                 //Erase the screen
   tft.drawRect(0, 0, 319, 240, WHITE);   //Draw white frame
 
-  tft.fillRect(20, 25, 50, 50, PURPLE);
-  tft.drawRect(20, 25, 50, 50, YELLOW);
-  tft.setCursor(25, 27);
-  tft.setTextColor(WHITE);
-  tft.setTextSize(1);
+  tft.fillRect(15, 20, 40, 30, PURPLE);
+  tft.drawRect(15, 20, 40, 30, WHITE);
+  tft.setCursor(23, 27);
+  tft.setTextColor(BLACK);
+  tft.setTextSize(2.5);
   tft.print("<-");
 
 }
