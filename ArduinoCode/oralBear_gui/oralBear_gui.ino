@@ -76,9 +76,9 @@ MCUFRIEND_kbv tft;
 TouchScreen ts = TouchScreen(XP, YP, XM, YM, 300);
 Adafruit_GFX_Button buttons[15];
 
-char btnlabels[15][5] = {"Game", "", "", "Timer", "", "", "Guide" , "", "", "", "", "", "", "", "" };
-uint16_t btncolors[3] = {DARKGREEN, CYAN, ORANGE};
-char currentPage = '1';
+//char btnlabels[15][5] = {"Timer", "", "", "Game", "", "", "Guide" , "", "", "", "", "", "", "", "" };
+//uint16_t btncolors[3] = {DARKGREEN, CYAN, ORANGE};
+int currentPage = 1;
 
 void setup() {
   Serial.begin(9600);
@@ -115,21 +115,14 @@ void setup() {
 
   tft.begin(identifier);
   tft.setRotation(1);
-  tft.fillScreen(BLACK);
-
-  //Draw white frame
-  //tft.drawRect(0,0,240,320,WHITE);  //if setRotation(0)
-  tft.drawRect(0, 0, 319, 240, WHITE);
-
   welcomeScreen();
-  currentPage = '1';
+  currentPage = 1;
 
 }
 
 #define MINPRESSURE 0
 #define MAXPRESSURE 1000
-boolean welcomeBtn = true;
-boolean backBtn = true;
+
 
 void loop() {
 
@@ -146,38 +139,51 @@ void loop() {
     p.x = map(p.x, TS_MAXX, TS_MINX, 0, 320);
     p.y = map(p.y, TS_MAXY, TS_MINY, 0, 240);
 
-    if (currentPage = '1') {
-      if (p.x > 60 && p.x < 260 && p.y > 180 && p.y < 220 && welcomeBtn) // The user has pressed inside the red rectangle
+    //Welcome Screen
+    if (currentPage = 1) {
+      if (p.x > 60 && p.x < 260 && p.y > 180 && p.y < 220) // The user has pressed inside the red rectangle
       {
-        welcomeBtn = false; //Disable button
-        currentPage = '2';
+        currentPage = 2;
         menuScreen();
       }
 
-    if (currentPage = '2') { 
-      if (p.x > 80 && p.x < 235 && p.y > 25 && p.y < 75 && backBtn) // The user has pressed inside the red rectangle
-      {
-        backBtn = false; //Disable button
-        setup();
+      //Start Menu Screen
+      if (currentPage = 2) {
+        if (p.x > 80 && p.x < 235 && p.y > 25 && p.y < 75)
+        {
+          currentPage = 3;
+          timerScreen();
+        }
+      }
+
+      if (currentPage = 3) {
+        if (p.x > 80 && p.x < 235 && p.y > 75 && p.y < 150)
+        {
+          currentPage = 2;
+          menuScreen();
+        }
+      }
+
+    }
+
+    // this code goes through all the buttons to error-check its functionality
+    for (uint8_t b = 0; b < 15; b++) {
+      if (buttons[b].contains(p.x, p.y)) {
+        Serial.print("Pressing: "); Serial.println(b);
+        buttons[b].press(true);  // tell the button it is pressed
+      } else {
+        buttons[b].press(false);  // tell the button it is NOT pressed
       }
     }
+    delay(10); // UI debouncing
   }
-
-  // this code goes through all the buttons to error-check its functionality
-  for (uint8_t b = 0; b < 15; b++) {
-    if (buttons[b].contains(p.x, p.y)) {
-      Serial.print("Pressing: "); Serial.println(b);
-      buttons[b].press(true);  // tell the button it is pressed
-    } else {
-      buttons[b].press(false);  // tell the button it is NOT pressed
-    }
-  }
-  delay(10); // UI debouncing
-}
 
 }
 
 void welcomeScreen() {
+  tft.fillScreen(BLACK);                 //Erase the screen
+  tft.drawRect(0, 0, 319, 240, WHITE);   //Draw white frame
+
   //Print "Hello" Text
   tft.setCursor(100, 30);
   tft.setTextColor(WHITE);
@@ -201,40 +207,42 @@ void welcomeScreen() {
 }
 
 void menuScreen() {
-  //Erase the screen
-  tft.fillScreen(BLACK);
-
-  //Draw frame
-  tft.drawRect(0, 0, 319, 240, WHITE);
+  tft.fillScreen(BLACK);                 //Erase the screen
+  tft.drawRect(0, 0, 319, 240, WHITE);   //Draw white frame
 
   // create buttons
-  for (uint8_t row = 0; row < 3; row++) {
+  //  for (uint8_t row = 0; row < 3; row++) {
+  //
+  //    for (uint8_t col = 0; col < 1; col++) {
+  //      //initButton(&MCU, x, y, w, h, outline, fill, text)
+  //      buttons[col + row * 3].initButton(&tft, BUTTON_X + col * (BUTTON_W + BUTTON_SPACING_X),
+  //                                        BUTTON_Y + row * (BUTTON_H + BUTTON_SPACING_Y),
+  //                                        BUTTON_W, BUTTON_H, WHITE, btncolors[col + row * 3], WHITE,
+  //                                        btnlabels[col + row * 3], BUTTON_TEXTSIZE);
+  //
+  //      buttons[col + row * 3].drawButton();
+  //    }
+  //  }
 
-    for (uint8_t col = 0; col < 1; col++) {
-      //initButton(&MCU, x, y, w, h, outline, fill, text)
-      buttons[col + row * 3].initButton(&tft, BUTTON_X + col * (BUTTON_W + BUTTON_SPACING_X),
-                                        BUTTON_Y + row * (BUTTON_H + BUTTON_SPACING_Y),
-                                        BUTTON_W, BUTTON_H, WHITE, btncolors[col + row * 3], WHITE,
-                                        btnlabels[col + row * 3], BUTTON_TEXTSIZE);
-
-      buttons[col + row * 3].drawButton();
-    }
-  }
-
-  tft.drawRect(80, 25, 155, 50, RED);
+  tft.fillRect(80, 25, 155, 50, ORANGE);
+  tft.drawRect(80, 25, 155, 50, WHITE);
+  tft.setCursor(82, 27);
+  tft.setTextColor(WHITE);
+  tft.setTextSize(2);
+  tft.print("Timer");
 }
 
-void gameScreen() {
-  //Erase the screen
-  tft.fillScreen(BLACK);
+void timerScreen() {
+  tft.fillScreen(BLACK);                 //Erase the screen
+  tft.drawRect(0, 0, 319, 240, WHITE);   //Draw white frame
 
-  //Draw frame
-  tft.drawRect(0, 0, 319, 240, WHITE);
-
-  tft.setCursor(100, 30);
+  tft.fillRect(20, 25, 50, 50, PURPLE);
+  tft.drawRect(20, 25, 50, 50, YELLOW);
+  tft.setCursor(25, 27);
   tft.setTextColor(WHITE);
-  tft.setTextSize(4);
-  tft.print("Hello");
+  tft.setTextSize(1);
+  tft.print("<-");
+
 }
 
 
