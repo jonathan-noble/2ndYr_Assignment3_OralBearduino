@@ -29,6 +29,7 @@
 #define OLIVE       0x7BE0      /* 128, 128,   0 */
 #define LIGHTGREY   0xC618      /* 192, 192, 192 */
 #define DARKGREY    0x7BEF      /* 128, 128, 128 */
+#define TEAL        0x03EF
 #define BLUE        0x001F      /*   0,   0, 255 */
 #define GREEN       0x07E0      /*   0, 255,   0 */
 #define CYAN        0x07FF      /*   0, 255, 255 */
@@ -248,6 +249,10 @@ void menuScreen() {
   tft.print("Timer");
 }
 
+float timeDelta = 0;
+float timeAccumulator = 60;
+int last = 0;
+
 void timerScreen() {
   tft.fillScreen(BLACK);                 //Erase the screen
   tft.drawRect(0, 0, 319, 240, WHITE);   //Draw white frame
@@ -258,6 +263,23 @@ void timerScreen() {
   tft.setTextColor(BLACK);
   tft.setTextSize(2.5);
   tft.print("<-");
+
+  int now = millis();
+  timeDelta = (now - last) / 1000.0f;
+  last = now;
+
+  timeAccumulator -= timeDelta;
+
+  tft.setCursor(100, 100);
+  tft.setTextColor(TEAL);
+  tft.setTextSize(4);
+  tft.print(timeAccumulator);
+
+  if (timeAccumulator <= 1) {
+    timeAccumulator = 60;
+  }
+
+  delay(1000);
 
 }
 
