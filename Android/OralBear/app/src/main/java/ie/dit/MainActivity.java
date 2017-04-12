@@ -7,13 +7,17 @@ package ie.dit;
 
 //import android.content.SharedPreferences;
 //import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.view.View;
+import android.content.res.Configuration;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+//import android.os.Bundle;
 //import android.media.AudioManager;
 //import android.media.MediaPlayer;
 
@@ -21,12 +25,13 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-   // MediaPlayer mySound;
-   //  SharedPreferences sharedPref;
+    // MediaPlayer mySound;
+    //  SharedPreferences sharedPref;
     View view;
 
     //created object for color picker buttons
     private Button redBtn, blueBtn, yellowBtn;
+
     @Override
 
     //its like void setup()--stndrd default
@@ -36,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         //calling layout
         setContentView(R.layout.activity_main);
 
-       // sharedPref= PreferenceManager.getDefaultSharedPreferences(this);
+        // sharedPref= PreferenceManager.getDefaultSharedPreferences(this);
 
         //initialised buttons
         redBtn = (Button) findViewById(R.id.button_red);
@@ -63,10 +68,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-//code so when button is clicked these methods will be executed
-    private void onButtonClick(int color){
+    //code so when button is clicked these methods will be executed
+    private void onButtonClick(int color) {
         Intent intent = new Intent(this, AudioActivity.class);
-        intent.putExtra("background",color);
+        intent.putExtra("background", color);
         startActivity(intent);
     }
 
@@ -91,11 +96,9 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+}
 
-
-
-
-
+    /*
 
 //        mySound = MediaPlayer.create(this, R.raw.shooting_stars);
 //
@@ -109,3 +112,4 @@ public class MainActivity extends AppCompatActivity {
 //    }
 }
 
+*/

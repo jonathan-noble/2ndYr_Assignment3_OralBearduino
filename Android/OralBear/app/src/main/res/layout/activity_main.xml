@@ -57,4 +57,16 @@
         android:layout_marginRight="15dp"
         android:layout_marginEnd="15dp" />
 
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/landscape_fragment" />
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/portrait_fragment" />
+
+
+
 </RelativeLayout>
