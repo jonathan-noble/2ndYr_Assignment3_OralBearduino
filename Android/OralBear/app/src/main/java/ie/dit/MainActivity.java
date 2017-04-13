@@ -7,12 +7,12 @@ package ie.dit;
 
 //import android.content.SharedPreferences;
 //import android.preference.PreferenceManager;
+import android.support.v7.app.AppCompatActivity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -75,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Schedule for the replacement of the Fragment as soon as possible
         fragmentTransaction.commit();
-
 
 
         //end of fragment code
