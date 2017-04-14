@@ -17,7 +17,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-//import android.os.Bundle;
 //import android.media.AudioManager;
 //import android.media.MediaPlayer;
 
@@ -27,82 +26,45 @@ public class MainActivity extends AppCompatActivity {
 
     // MediaPlayer mySound;
     //  SharedPreferences sharedPref;
-    View view;
 
     //created object for color picker buttons
     private Button redBtn, blueBtn, yellowBtn;
 
-    @Override
-
-    //its like void setup()--stndrd default
+     //its like void setup()--stndrd default
+     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //i think calling all methods on savedinstances
         super.onCreate(savedInstanceState);
         //calling layout
         setContentView(R.layout.activity_main);
 
-        //fragment code
+         //initialised buttons
+         redBtn = (Button) findViewById(R.id.button_red);
+         blueBtn = (Button) findViewById(R.id.button_blue);
+         yellowBtn = (Button) findViewById(R.id.button_yellow);
 
-        // Allows you to interact with Fragments in an Activity
-        FragmentManager fragmentManager = getFragmentManager();
-
-        // beginTransaction() begins the FragmentTransaction which allows you to
-        // add, attach, detach, hide, remove, replace, animate, transition or
-        // show fragments
-        FragmentTransaction fragmentTransaction =
-                fragmentManager.beginTransaction();
-
-        // The Configuration object provides device configuration info
-        // http://developer.android.com/reference/android/content/res/Configuration.html
-        Configuration configInfo = getResources().getConfiguration();
-
-        // Depending on the screen orientation replace with the correct fragment
-        if(configInfo.orientation == Configuration.ORIENTATION_LANDSCAPE){
-
-            FragmentLandscape fragmentLandscape = new FragmentLandscape();
-
-            fragmentTransaction.replace(android.R.id.content,
-                    fragmentLandscape);
-
-        } else {
-
-            FragmentPortrait fragmentPortrait = new FragmentPortrait();
-
-            fragmentTransaction.replace(android.R.id.content,
-                    fragmentPortrait);
-
-        }
-
-        // Schedule for the replacement of the Fragment as soon as possible
-        fragmentTransaction.commit();
+         redBtn.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 onButtonClick(R.color.red);
+             }
+         });
+         blueBtn.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 onButtonClick(R.color.blue);
+             }
+         });
+         yellowBtn.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 onButtonClick(R.color.yellow);
+             }
+         });
 
 
-        //end of fragment code
         // sharedPref= PreferenceManager.getDefaultSharedPreferences(this);
 
-        //initialised buttons
-        redBtn = (Button) findViewById(R.id.button_red);
-        blueBtn = (Button) findViewById(R.id.button_blue);
-        yellowBtn = (Button) findViewById(R.id.button_yellow);
-
-        redBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onButtonClick(R.color.red);
-            }
-        });
-        blueBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onButtonClick(R.color.blue);
-            }
-        });
-        yellowBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onButtonClick(R.color.yellow);
-            }
-        });
     }
 
     //code so when button is clicked these methods will be executed
@@ -113,10 +75,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void ListenAudio(View v) {
-
-        startActivity(new Intent(this, AudioActivity.class));
-    }
+//    public void ListenAudio(View v) {
+//
+//        startActivity(new Intent(this, AudioActivity.class));
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -133,20 +95,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }
 
-    /*
-
-//        mySound = MediaPlayer.create(this, R.raw.shooting_stars);
-//
-//         Button play = (Button) findViewbyId(R.id.button_play);
-////         Button pause = (Button) findViewbyId(R.id.button_pause);
-////         Button stop = (Button) findViewbyId(R.id.button_stop);
-
-//
-//    public void playMusic(View view) {
-//    mySound.start();
-//    }
-}
-
-*/

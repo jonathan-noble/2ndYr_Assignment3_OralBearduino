@@ -17,7 +17,7 @@ import android.widget.RelativeLayout;
 
 public class AudioActivity extends AppCompatActivity {
 
-   View view;
+  // View view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +26,6 @@ public class AudioActivity extends AppCompatActivity {
 
 //        view=this.getWindow().getDecorView();
 //        view.setBackgroundResource(R.color.gray);
-
-
 
         int color = getIntent().getIntExtra("background", -1);
         if(color != -1) {
@@ -57,7 +55,5 @@ public class AudioActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
 
 }

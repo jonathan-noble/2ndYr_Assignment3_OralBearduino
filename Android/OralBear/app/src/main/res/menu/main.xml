@@ -10,4 +10,18 @@
         android:orderInCategory="100"
         android:title="Settings"
         app:showAsAction="never"/>
+
+
+    <item android:id="@+id/nav_reminder"
+        android:title="Daily Reminder" />
+
+    <item android:id="@+id/nav_data"
+        android:title="Data Graphs" />
+
+    <item android:id="@+id/nav_tunepal"
+        android:title="Tunepal" />
+
+    <item android:id="@+id/nav_share"
+        android:title="Share" />
+
 </menu>

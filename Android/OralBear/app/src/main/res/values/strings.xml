@@ -1,12 +1,9 @@
 <resources>
     <string name="app_name">Oral Bearduino</string>
-    <string name="title_activity_nav">NavActivity</string>
-
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-    <string name="title_activity_navigation">NavigationActivity</string>
-    <string name="portrait_mode_text_view" />
-    <string name="landscape_mode_text_view" />
+    <string name="title_activity_nav_drawer">NavDrawer</string>
+    <string name="navigation_drawer_open">Navigation Open</string>
+    <string name="navigation_drawer_close">Navigation Closed</string>
+
 </resources>
