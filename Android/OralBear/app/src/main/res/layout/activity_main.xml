@@ -9,54 +9,49 @@
     tools:context=".MainActivity"
     android:id="@+id/drawerLayout">
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Playlist"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="187dp"
-        android:onClick="ListenAudio"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/darker_gray">
 
-    <Button
-        android:id="@+id/button_red"
-        android:onClick="onButtonClick"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="RED"
-        android:layout_marginLeft="18dp"
-        android:layout_marginStart="18dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="30dp" />
+        <include layout ="@layout/navigation_action"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-    <Button
-        android:id="@+id/button_blue"
-        android:onClick="onButtonClick"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="BLUE"
-        android:layout_alignBaseline="@+id/button_red"
-        android:layout_alignBottom="@+id/button_red"
-        android:layout_alignStart="@+id/button" />
 
-    <Button
-        android:id="@+id/button_yellow"
-        android:onClick="onButtonClick"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="YELLOW"
-        android:layout_marginRight="15dp"
-        android:layout_marginEnd="16dp"
-        android:layout_alignBaseline="@+id/button_blue"
-        android:layout_alignBottom="@+id/button_blue"
-        android:layout_alignParentEnd="true" />
-</RelativeLayout>
+        <Button
+            android:id="@+id/button_red"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="32dp"
+            android:onClick="onButtonClick"
+            android:text="RED" />
+
+        <Button
+            android:id="@+id/button_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/button_red"
+            android:layout_alignBottom="@+id/button_red"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="26dp"
+            android:onClick="onButtonClick"
+            android:text="BLUE" />
+
+        <Button
+            android:id="@+id/button_yellow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/button_blue"
+            android:layout_alignBottom="@+id/button_blue"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="15dp"
+            android:onClick="onButtonClick"
+            android:text="YELLOW" />
+    </RelativeLayout>
 
     <android.support.design.widget.NavigationView
         android:layout_width="wrap_content"

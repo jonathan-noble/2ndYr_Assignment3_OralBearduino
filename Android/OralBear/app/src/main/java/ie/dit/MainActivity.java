@@ -16,6 +16,7 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private Button redBtn, blueBtn, yellowBtn;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
+
+    private Toolbar mToolbar;
 
 
      //its like void setup()--stndrd default
@@ -68,6 +71,9 @@ public class MainActivity extends AppCompatActivity {
              }
          });
 
+         mToolbar =(Toolbar)findViewById(R.id.nav_action);
+         setSupportActionBar(mToolbar);
+
          mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
          mToggle =new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.navigation_drawer_close);
          //4 param this activity,layout then 2 strings
@@ -76,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
          mToggle.syncState();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        //getSupportActionBar().setLogo(R.drawable.Toothbrus);
         // sharedPref= PreferenceManager.getDefaultSharedPreferences(this);
 
     }
