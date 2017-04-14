@@ -5,23 +5,25 @@
     tools:context="ie.dit.MainActivity"
     >
 
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="Settings"
-        app:showAsAction="never"/>
-
 
     <item android:id="@+id/nav_reminder"
+        android:icon="@mipmap/ic_alarm_black_24dp"
         android:title="Daily Reminder" />
 
     <item android:id="@+id/nav_data"
-        android:title="Data Graphs" />
+        android:icon="@mipmap/ic_track_changes_black_24dp"
+        android:title="Keep Track" />
 
     <item android:id="@+id/nav_tunepal"
-        android:title="Tunepal" />
+        android:icon="@mipmap/ic_video_library_black_24dp"
+        android:title="Tutorials" />
 
-    <item android:id="@+id/nav_share"
-        android:title="Share" />
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:icon="@mipmap/ic_settings_black_24dp"
+        android:title="Settings"
+        app:showAsAction="never"/>
+
 
 </menu>
