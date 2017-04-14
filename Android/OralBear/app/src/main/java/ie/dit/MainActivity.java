@@ -7,6 +7,9 @@ package ie.dit;
 
 //import android.content.SharedPreferences;
 //import android.preference.PreferenceManager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -29,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
 
     //created object for color picker buttons
     private Button redBtn, blueBtn, yellowBtn;
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mToggle;
+
 
      //its like void setup()--stndrd default
      @Override
@@ -62,6 +68,14 @@ public class MainActivity extends AppCompatActivity {
              }
          });
 
+         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+         mToggle =new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.navigation_drawer_close);
+         //4 param this activity,layout then 2 strings
+
+         mDrawerLayout.addDrawerListener(mToggle);
+         mToggle.syncState();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // sharedPref= PreferenceManager.getDefaultSharedPreferences(this);
 
@@ -91,6 +105,12 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+            return true;
+
+        }
+
+        if(mToggle.onOptionsItemSelected(item))
+        {
             return true;
         }
         return super.onOptionsItemSelected(item);
