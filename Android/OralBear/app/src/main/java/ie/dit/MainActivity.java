@@ -5,24 +5,17 @@ package ie.dit;
  * buttons/background color created by pia
  */
 
-//import android.content.SharedPreferences;
-//import android.preference.PreferenceManager;
+import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-//import android.media.AudioManager;
-//import android.media.MediaPlayer;
 
 
 
@@ -35,6 +28,10 @@ public class MainActivity extends AppCompatActivity {
     private Button redBtn, blueBtn, yellowBtn;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
+
+    //initialise fragment variables
+
+
 
     //private Toolbar mToolbar;
 
@@ -78,14 +75,28 @@ public class MainActivity extends AppCompatActivity {
          mToggle =new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.navigation_drawer_close);
          //4 param this activity,layout then 2 strings
 
+
+
          mDrawerLayout.addDrawerListener(mToggle);
+
+         //fragment var to display them
+
+
          mToggle.syncState();
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+         //change title of tool bar to whatver fragment
+        // getSupportActionBar().setTitle("Reminder Fragment...");
+
+
         //getSupportActionBar().setLogo(R.drawable.Toothbrus);
         // sharedPref= PreferenceManager.getDefaultSharedPreferences(this);
 
     }
+
+
 
     //code so when button is clicked these methods will be executed
     private void onButtonClick(int color) {

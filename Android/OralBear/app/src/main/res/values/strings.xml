@@ -13,4 +13,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="track_fragment">Keep Track</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="tutorial_fragment">Tutorials</string>
 </resources>

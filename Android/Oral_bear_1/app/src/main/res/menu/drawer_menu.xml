@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/music_id"
+            android:title="Play tunes"
+            android:icon="@drawable/ic_music_note_black_24dp"></item>
+
+        <item
+         android:id="@+id/reminder_id"
+         android:title="Daily Reminder"
+         android:icon="@drawable/ic_alarm_black_24dp"></item>
+
+        <item
+            android:id="@+id/tutorial_id"
+            android:title="Tutorials"
+            android:icon="@drawable/ic_video_library_black_24dp"></item>
+
+        <item android:title="Social">
+            <menu>
+                <item
+                    android:title="Add to Group"
+                    android:id="@+id/add_to_group"
+                    android:icon="@drawable/ic_group_black_24dp"
+
+                ></item>
+                <item
+                    android:title="Share"
+                    android:id="@+id/id_share"
+                    android:icon="@drawable/ic_share_black_24dp"
+
+                    ></item>
+
+            </menu>
+        </item>
+    </group>
+</menu>

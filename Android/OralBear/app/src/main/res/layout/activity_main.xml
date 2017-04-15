@@ -47,6 +47,18 @@
             android:layout_marginRight="15dp"
             android:onClick="onButtonClick"
             android:text="YELLOW" />
+
+        <include
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            layout="@layout/navigation_header"
+/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/main_container">
+
+        </FrameLayout>
     </RelativeLayout>
 
     <android.support.design.widget.NavigationView
@@ -55,6 +67,8 @@
         app:menu="@menu/main"
         android:layout_gravity="start"
         app:headerLayout="@layout/navigation_header">
+
+
     </android.support.design.widget.NavigationView>
 
 
