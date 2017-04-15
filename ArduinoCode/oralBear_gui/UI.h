@@ -6,29 +6,31 @@
 #include <Adafruit_GFX.h>     // Core graphics library: https://github.com/adafruit/Adafruit-GFX-Library
 #include <TouchScreen.h>      // https://github.com/adafruit/Touch-Screen-Library
 
+#include "Button.h"
 /******************* UI details */
-#define BUTTON_X 120
-#define BUTTON_Y 100
-#define BUTTON_W 60
-#define BUTTON_H 30
-#define BUTTON_SPACING_X 20
-#define BUTTON_SPACING_Y 20
-#define BUTTON_TEXTSIZE 2
+
+#define NUM_BTNS 3
+#define HOME_BTN 0
+#define BACK_BTN 1
+#define TIMER_BTN 2
 
 class UI {
-public:
- // UI();
+  public:
+    UI();
 
-  void init();
-  void btnPressed();
-  void welcomeScreen();
-  void menuScreen();
-  void timerScreen();
+    void init();
+    void btnPressed();
+    void welcomeScreen();
+    void menuScreen();
+    void timerScreen();
 
-private:
- // Adafruit_GFX_Button buttons[15];    //used later since I'm leaning more on GFX vs TFT library
+  private:
+    // Adafruit_GFX_Button buttons[15];    //used later since I'm leaning more on GFX vs TFT library
+    //private pointer variables created hence the underscore for conventional purposes
+    Button _buttons[NUM_BTNS];
 
-TouchScreen *_ts;   //private variables created
+    Adafruit_GFX *_gfx;
+    TouchScreen *_ts;
 };
 
 #endif
