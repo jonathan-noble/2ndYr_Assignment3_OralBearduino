@@ -7,4 +7,7 @@
     <string name="navigation_drawer_close">Navigation Closed</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="reminder_fragment">Daily Reminder</string>
 </resources>
