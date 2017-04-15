@@ -10,4 +10,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="reminder_fragment">Daily Reminder</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="track_fragment">Keep Track</string>
 </resources>
