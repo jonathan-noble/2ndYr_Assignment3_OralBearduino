@@ -5,6 +5,10 @@
     tools:context="ie.dit.MainActivity"
     >
 
+    <include layout ="@layout/navigation_action"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 
     <item android:id="@+id/nav_reminder"
         android:icon="@mipmap/ic_alarm_black_24dp"
@@ -24,6 +28,8 @@
         android:icon="@mipmap/ic_settings_black_24dp"
         android:title="Settings"
         app:showAsAction="never"/>
+
+
 
 
 </menu>

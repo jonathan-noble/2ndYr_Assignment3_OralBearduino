@@ -17,7 +17,7 @@ import android.widget.RelativeLayout;
 
 public class AudioActivity extends AppCompatActivity {
 
-  // View view;
+    // View view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
