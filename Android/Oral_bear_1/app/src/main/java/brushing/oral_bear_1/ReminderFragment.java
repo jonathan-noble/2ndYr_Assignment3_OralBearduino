@@ -2,24 +2,30 @@ package brushing.oral_bear_1;
 
 
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+
+import android.annotation.SuppressLint;
+import android.app.TimePickerDialog;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
-import android.widget.DatePicker;
+import android.text.format.DateFormat;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import java.util.Calendar;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class ReminderFragment extends DialogFragment {
+
+
+public class ReminderFragment extends Fragment{
+
 
 
     public ReminderFragment() {
