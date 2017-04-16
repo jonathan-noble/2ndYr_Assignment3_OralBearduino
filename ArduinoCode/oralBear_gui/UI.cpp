@@ -14,13 +14,13 @@
 #define TS_MAXX 948
 #define TS_MAXY 910
 
-#define MINPRESSURE 0
+#define MINPRESSURE 5
 #define MAXPRESSURE 1000
 
-int currentState = 1;
+
+//int currentState = 1;
 
 UI::UI() {
-
 }
 
 void UI::init() {
@@ -30,13 +30,14 @@ void UI::init() {
   tft->reset();
   tft->begin(0x9341);
   tft->setRotation(1);
+
   _ts = new TouchScreen(XP, YP, XM, YM, 300);
-  welcomeScreen();
-  currentState = 1;
+
+  // currentState = 1;
 }
 
 
-void UI::btnPressed() {
+void UI::checkBtnPressed() {
   TSPoint p = _ts->getPoint();  //p = touchPoint
 
   pinMode(XM, OUTPUT);
@@ -48,57 +49,72 @@ void UI::btnPressed() {
     // scale from 0->1023 to _gfx->width
     p.x = map(p.x, TS_MAXX, TS_MINX, 0, _gfx->width());
     p.y = map(p.y, TS_MAXY, TS_MINY, 0, _gfx->height());
-    
 
-    //Welcome Screen
-    if (currentState == 1) {
-      if (p.x > 60 && p.x < 260 && p.y > 180 && p.y < 220) // The user has pressed inside the red rectangle
-      {
-        currentState = 2;
-        menuScreen();
-      }
-    }
 
-    //Start Menu Screen
-    if (currentState == 2) {
-      //Back Button
-      if (p.x > 15 && p.x < 55 && p.y > 20 && p.y < 70)
-      {
-        currentState = 1;
-        welcomeScreen();
-      }
-      //Timer Button
-      if (p.x > 80 && p.x < 235 && p.y > 20 && p.y < 70)
-      {
-        currentState = 3;
-        timerScreen();
-      }
-    }
+    //    //Welcome Screen
+    //    if (currentState == 1) {
+    //      if (p.x > 60 && p.x < 260 && p.y > 180 && p.y < 220) // The user has pressed inside the red rectangle
+    //      {
+    //        currentState = 2;
+    //        menuScreen();
+    //      }
+    //    }
+    //
+    //    //Start Menu Screen
+    //    if (currentState == 2) {
+    //      //Back Button
+    //      if (p.x > 15 && p.x < 55 && p.y > 20 && p.y < 70)
+    //      {
+    //        currentState = 1;
+    //        welcomeScreen();
+    //      }
+    //      //Timer Button
+    //      if (p.x > 80 && p.x < 235 && p.y > 20 && p.y < 70)
+    //      {
+    //        currentState = 3;
+    //        timerScreen();
+    //      }
+    //    }
+    //
+    //    //Timer Screen
+    //    if (currentState == 3) {
+    //      //Back Button
+    //      if (p.x > 15 && p.x < 55 && p.y > 20 && p.y < 70)
+    //      {
+    //        currentState = 2;
+    //        menuScreen();
+    //      }
+    //    }
 
-    //Timer Screen
-    if (currentState == 3) {
-      //Back Button
-      if (p.x > 15 && p.x < 55 && p.y > 20 && p.y < 70)
-      {
-        currentState = 2;
-        menuScreen();
-      }
-    }
-
-    for (int i = HOME_BTN; i < NUM_BTNS; i++) {
-      if(_buttons[i].hit(p.x, p.y)) {
+    //checking every buttons if they are pressed within the touchpoints
+    for (int i = WELCOME_BTN; i < NUM_BTNS; i++) {
+      if (_buttons[i].hit(p.x, p.y)) {
         break;
       }
     }
-    
+
   }
 
- 
-  delay(10); // UI debouncing  
+  delay(10); // UI debouncing
 }
 
+//Calling back the parameters of the functions from the main
+void UI::addButton(int btnId, void (*callback)()) {
+  _buttons[btnId].callback = callback;
+}
 
-void UI::welcomeScreen() {
+//Toggles button to activate/deactivate
+void UI::activateButton(int btnId) {
+  if (btnId == WELCOME_BTN) {
+    _buttons[_activeButtonId].activateButtonAndDraw(false);
+
+    _activeButtonId = btnId;
+    _buttons[_activeButtonId].activateButtonAndDraw(true);
+    return;
+  }
+}
+
+void UI::display() {
   _gfx->fillScreen(BLACK);                 //Erase the screen
   _gfx->drawRect(0, 0, 319, 240, WHITE);   //Draw white frame
 
@@ -114,13 +130,26 @@ void UI::welcomeScreen() {
   _gfx->setTextSize(4);
   _gfx->print("Master!");
 
-  //Create Red Button
-  _gfx->fillRect(60, 180, 200, 40, RED);
-  _gfx->drawRect(60, 180, 200, 40, WHITE);
-  _gfx->setCursor(70, 188);
-  _gfx->setTextColor(WHITE);
-  _gfx->setTextSize(3);
-  _gfx->print("START MENU");
+  int btnW = _gfx->width() / 3 - 8;
+  int btnH = _gfx->height() - 1;
+
+  _buttons[WELCOME_BTN].x = btnW + BUTTON_X_SPACING -2;
+  _buttons[WELCOME_BTN].y = btnH - BUTTON_HEIGHT;
+  _buttons[WELCOME_BTN].width = btnW + 90;
+  _buttons[WELCOME_BTN].height = BUTTON_HEIGHT + 20;
+  _buttons[WELCOME_BTN].visible = true;
+  _buttons[WELCOME_BTN].active = false;
+  _buttons[WELCOME_BTN].enabled = true;
+  _buttons[WELCOME_BTN].id = WELCOME_BTN;
+
+  for (int i = WELCOME_BTN; i < NUM_BTNS; i++) {
+    _buttons[i].gfx = _gfx;
+    _buttons[i].drawButton();
+  }
+
+}
+
+void UI::welcomeScreen() {
 
 }
 

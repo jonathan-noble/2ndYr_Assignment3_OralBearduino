@@ -8,24 +8,56 @@
         -tips/advice on how to brush teeth
 */
 
+//Libraries
 #include <Arduino.h>
 #include "UI.h"
 
 UI ui;
 
-//char btnlabels[15][5] = {"Timer", "", "", "Game", "", "", "Guide" , "", "", "", "", "", "", "", "" };
-//uint16_t btncolors[3] = {DARKGREEN, CYAN, ORANGE};
+int currentState = WELCOME_BTN;
+
+//logic
+bool start = false;
+
+
+// *** Begin Callback functions ***
+void onWelcomeClick();
 
 void setup() {
-  Serial.begin(9600);
-  ui.init();
+  Serial.begin(115200);
+  ui.init();  // calling the initialized function of class UI
+  ui.addButton(WELCOME_BTN, onWelcomeClick);  //adding the button and its function to setup
+
+
+  // delay(2000);
+
+  ui.display();
 }
 
 void loop() {
+  //  digitalWrite(13, HIGH);
+  //  digitalWrite(13, LOW);
+  if (start && (currentState != WELCOME_BTN)) {
+    // motor.stop();
+    start = false;
 
-  digitalWrite(13, HIGH);
-  digitalWrite(13, LOW);
-  ui.btnPressed();
+  }
+  
+  ui.checkBtnPressed();
 
+}
+
+
+void onWelcomeClick() {
+  if (start) {
+    return;
+  }
+
+  if (currentState == WELCOME_BTN) {
+    return;
+  }
+
+  currentState = WELCOME_BTN;
+  ui.activateButton(currentState);
 }
 
