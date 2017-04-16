@@ -15,7 +15,7 @@ void Button::drawButton() {
 
   //if not pressed(or visible), then just fill the buttons into black
   if (!visible) {
-    gfx->fillRect(x1 + 1, y1 + 1, w - 2, h - 2, BLACK); // clear previous drawing
+    gfx->fillRect(x1, y1, w - 2, h - 2, BLACK); // clear previous drawing
     return;
   }
 
@@ -26,7 +26,7 @@ void Button::drawButton() {
 
   //draw buttons
   String label;
-  if (id == WELCOME_BTN) {
+  if (id == WELCOME_SCREEN) {
     label = "START";
   }
 
@@ -36,7 +36,7 @@ void Button::drawButton() {
   gfx->print(label);
 
 
-  //Create Red Welcome Button
+  //Create Frame Button
   gfx->drawRoundRect(x1 + 1, y1 + 1, w - 2, h - 2, BUTTON_RADIUS, frameColor); //60, 180, 200, 40, WHITE);
 
 }
@@ -62,7 +62,9 @@ void Button::animateButtonClick() {
 
 //error-check to test if buttons are hit inside the touchPoint
 bool Button::hit(uint16_t xpos, uint16_t ypos) {
-  bool hitTest = visible && enabled && (xpos > x) && (xpos < (x + width)) && (ypos > y) && (ypos < (y + height));
+  bool hitTest = visible && enabled && 
+                 (xpos > x) && (xpos < (x + width)) && 
+                 (ypos > y) && (ypos < (y + height));
   if (hitTest) {
     animateButtonClick();
     callback();

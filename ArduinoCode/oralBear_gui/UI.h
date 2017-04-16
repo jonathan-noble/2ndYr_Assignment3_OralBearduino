@@ -8,10 +8,11 @@
 #include "Button.h"
 /******************* UI details */
 
-#define NUM_BTNS 3
-#define WELCOME_BTN 0
-#define BACK_BTN 1
-#define TIMER_BTN 2
+#define NUM_SCREENS 4
+#define WELCOME_SCREEN 0
+#define BACK_SCREEN 1
+#define MENU_SCREEN 2
+#define TIMER_SCREEN 3
 
 
 #define BUTTON_X_SPACING  10
@@ -23,6 +24,7 @@ class UI {
 
     void init();
     void display();
+    void display2();
     
     void checkBtnPressed();
     void addButton(int btnId, void (*callback)());
@@ -35,7 +37,7 @@ class UI {
   private:
     // Adafruit_GFX_Button buttons[15];    //used later since I'm leaning more on GFX vs TFT library
     //private pointer variables created hence the underscore for conventional purposes
-    Button _buttons[NUM_BTNS];
+    Button _buttons[NUM_SCREENS];
     int _activeButtonId;
     
     Adafruit_GFX *_gfx;
