@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Oral Bearduino</string>
+    <string name="drawer_open">drawer open</string>
+    <string name="drawer_close">drawer close</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="music_fragment">Play music</string>
+    <string name="reminder_fragment">Set a reminder</string>
+    <string name="tutorial_fragment">Watch tutorials</string>
+
+</resources>
