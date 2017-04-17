@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    
+
     tools:context="brushing.oral_bear_1.MainActivity"
     android:id="@+id/drawer_layout"
     >
@@ -28,39 +28,10 @@
             android:id="@+id/main_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="20dp"
-            android:paddingBottom="10dp"
-            android:paddingEnd="10dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:paddingStart="10dp"
-            android:paddingTop="10dp">
+           >
 
         </FrameLayout>
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text = " TEXT DEFAULT! "
-            android:textAlignment="center"
-            android:id="@+id/txt_TextDateTime" />
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Date Picker"
-            android:id="@+id/btn_datePicker"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp" />
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Time Picker"
-            android:id="@+id/btn_timePicker"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/btn_datePicker"
-            android:layout_centerHorizontal="true" />
 
 
     </RelativeLayout>

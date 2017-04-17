@@ -10,28 +10,18 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.TextView;
-import android.widget.TimePicker;
-
-import java.text.DateFormat;
-import java.util.Calendar;
 
 
 
 public class MainActivity extends AppCompatActivity {
 
+/*
     DateFormat formatDateTime = DateFormat.getDateTimeInstance();
     Calendar dateTime = Calendar.getInstance();
     private TextView text;
     private Button btn_date;
     private Button btn_time;
+*/
     DrawerLayout drawerLayout;
 
     //create variable for the toolbar
@@ -125,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-
+/*
         text = (TextView) findViewById(R.id.txt_TextDateTime);
         btn_date = (Button) findViewById(R.id.btn_datePicker);
         btn_time = (Button) findViewById(R.id.btn_timePicker);
@@ -145,10 +135,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         updateTextLabel();
-
+*/
 
     }
-
+/*
     private void updateDate(){
         new DatePickerDialog(this, d, dateTime.get(Calendar.YEAR),dateTime.get(Calendar.MONTH),dateTime.get(Calendar.DAY_OF_MONTH)).show();
     }
@@ -180,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
         text.setText(formatDateTime.format(dateTime.getTime()));
     }
 
-
+*/
     @Override
 
     protected void onPostCreate(Bundle savedInstanceState) {
