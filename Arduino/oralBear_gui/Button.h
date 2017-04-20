@@ -52,7 +52,7 @@ class Button {
 
     Adafruit_GFX *gfx;
 
-    unsigned int x, y, width, height;
+    unsigned int x, y, width, height; //variables also used in UI.h
     int id;
     bool visible;
     bool active;

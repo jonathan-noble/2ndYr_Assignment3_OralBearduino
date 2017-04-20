@@ -15,7 +15,7 @@ void Button::drawButton() {
 
   //if not pressed(or visible), then just fill the buttons into black
   if (!visible) {
-    gfx->fillRect(x1, y1, w - 2, h - 2, BLACK); // clear previous drawing
+    gfx->fillRect(x1, y1, width - 2, height - 2, BLACK); // clear previous drawing
     return;
   }
 
@@ -23,21 +23,42 @@ void Button::drawButton() {
 
   //draw frame
   int frameColor = WHITE;
-
-  //draw buttons
-  String label;
-  if (id == WELCOME_SCREEN) {
-    label = "START";
+  if (active) {
+    frameColor = GREEN;
   }
 
-  gfx->setCursor(110, 188);
-  gfx->setTextColor(WHITE);
+  //draw buttons
+  if (id != BACK_BTN) {
+    gfx->drawRoundRect(x1, y1 -60, width, height, BUTTON_RADIUS, frameColor);
+  }
+
+   if (id == BACK_BTN) {
+    gfx->fillRect(15, 20, 40, 30, PURPLE);
+    gfx->drawRect(15, 20, 40, 30, WHITE);
+    gfx->setCursor(23, 27);
+    gfx->setTextColor(BLACK);
+    gfx->setTextSize(2.5);
+    gfx->print("<-");
+    return;
+  }
+
+  String label;
+  if (id == MENU1_BTN) {
+    label = "TIMER";
+  }
+
+  gfx->setTextColor(frameColor);
+  gfx->setCursor(x1, y1);
   gfx->setTextSize(3);
   gfx->print(label);
+  gfx->setTextColor(WHITE);
 
+  if (!active) {
+    frameColor = BLACK;
+  }
 
-  //Create Frame Button
-  gfx->drawRoundRect(x1 + 1, y1 + 1, w - 2, h - 2, BUTTON_RADIUS, frameColor); //60, 180, 200, 40, WHITE);
+  //Emphasise frame
+  gfx->drawRoundRect(x1 + 1, y1 + 1, width - 2, height - 2, BUTTON_RADIUS, frameColor); //60, 180, 200, 40, WHITE);
 
 }
 
@@ -62,8 +83,8 @@ void Button::animateButtonClick() {
 
 //error-check to test if buttons are hit inside the touchPoint
 bool Button::hit(uint16_t xpos, uint16_t ypos) {
-  bool hitTest = visible && enabled && 
-                 (xpos > x) && (xpos < (x + width)) && 
+  bool hitTest = visible && enabled &&
+                 (xpos > x) && (xpos < (x + width)) &&
                  (ypos > y) && (ypos < (y + height));
   if (hitTest) {
     animateButtonClick();
@@ -73,7 +94,7 @@ bool Button::hit(uint16_t xpos, uint16_t ypos) {
   return hitTest;
 }
 
-
+//show buttons if visible is true THEN if not visible, call the code from drawButton
 void Button::showButtonAndDraw(bool isVisible) {
   visible = isVisible;
   drawButton();
