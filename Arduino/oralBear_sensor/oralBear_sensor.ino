@@ -1,12 +1,12 @@
 #include <ESP8266WiFi.h>  // the ESP8266WiFi.h  lib
 const char* SSID = "eir04969720-2.4G"; //"poop";
-const char* PASS ="w5hgmmyg"; //"piapiapia";
+const char* PASS = "w5hgmmyg"; //"piapiapia";
 char server[] = "mail.smtp2go.com";
-//ADC_MODE(ADC_VCC);
-
+ADC_MODE(ADC_VCC);  // for reading Voltages
+  
 
 int sensorPin = A0;    // select the input pin for the vibration sensor
-int motion = 0;  // variable to store the value coming from the sensor
+int sensorValue = 0;  // variable to store the value coming from the sensor
 
 WiFiClient client;
 void setup()
@@ -25,23 +25,25 @@ void setup()
   }
   Serial.println("");
   Serial.println("WiFi Connected");
-  Serial.print("IPess: ");
+  Serial.print("IP Address: ");
   Serial.println(WiFi.localIP());
 
-  motion = analogRead(sensorPin);
-  String motionString = String(motion, 1);
 
-  if(motionString <= "0") {
-  byte ret = sendEmail(motionString);
-  }
 }
 
 void loop()
 {
+  sensorValue = analogRead(sensorPin);
+
+  if (sensorValue >= 30) {
+    byte ret = sendEmail(sensorValue);
+  }
+
+  delay(sensorValue);
 
 }
 
-byte sendEmail(String motion)
+byte sendEmail(int motion)
 {
   byte thisByte = 0;
   byte respCode;
@@ -72,7 +74,7 @@ byte sendEmail(String motion)
   client.println("b3JhbGJlYXI4");//  SMTP Passw
 
   if (!eRcv()) return 0;
-  Serial.println(F("Sending From"));   // change to sender email address 
+  Serial.println(F("Sending From"));   // change to sender email address
   client.println(F("MAIL From: thenoblelad@gmail.com"));
 
   if (!eRcv()) return 0;   // change to recipient address
@@ -100,10 +102,6 @@ byte sendEmail(String motion)
 
   client.print(F("Device ID: "));
   client.println(ESP.getChipId());
-
-  Serial.print(F("Voltage"));
-  Serial.print(ESP.getVcc());
-  client.println(F("."));
 
   if (!eRcv()) return 0;
   Serial.println(F("Sending QUIT"));
