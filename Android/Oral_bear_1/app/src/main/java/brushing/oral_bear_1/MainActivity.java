@@ -11,8 +11,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 
-
-
 public class MainActivity extends AppCompatActivity {
 
 /*
@@ -89,11 +87,10 @@ public class MainActivity extends AppCompatActivity {
                         //we have to display music frag
                         fragmentTransaction = getSupportFragmentManager().beginTransaction();
                         //replace() becoz we need to put this frag in the container
-                        fragmentTransaction.replace(R.id.main_container,new ReminderFragment());
+                        FragmentTransaction replace = fragmentTransaction.replace(R.id.main_container, new Web_ViewFragment());
                         fragmentTransaction.commit();
-
                         //change title of tool bar
-                        getSupportActionBar().setTitle("Daily Reminder");
+                        getSupportActionBar().setTitle("Keep Track");
                         item.setChecked(true);
                         drawerLayout.closeDrawers();
                         break;
@@ -115,62 +112,10 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-/*
-        text = (TextView) findViewById(R.id.txt_TextDateTime);
-        btn_date = (Button) findViewById(R.id.btn_datePicker);
-        btn_time = (Button) findViewById(R.id.btn_timePicker);
 
-        btn_date.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                updateDate();
-            }
-        });
-
-        btn_time.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                updateTime();
-            }
-        });
-
-        updateTextLabel();
-*/
 
     }
-/*
-    private void updateDate(){
-        new DatePickerDialog(this, d, dateTime.get(Calendar.YEAR),dateTime.get(Calendar.MONTH),dateTime.get(Calendar.DAY_OF_MONTH)).show();
-    }
 
-    private void updateTime(){
-        new TimePickerDialog(this, t, dateTime.get(Calendar.HOUR_OF_DAY), dateTime.get(Calendar.MINUTE), true).show();
-    }
-
-    DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
-        @Override
-        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-            dateTime.set(Calendar.YEAR, year);
-            dateTime.set(Calendar.MONTH, monthOfYear);
-            dateTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            updateTextLabel();
-        }
-    };
-
-    TimePickerDialog.OnTimeSetListener t = new TimePickerDialog.OnTimeSetListener() {
-        @Override
-        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            dateTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
-            dateTime.set(Calendar.MINUTE, minute);
-            updateTextLabel();
-        }
-    };
-
-    private void updateTextLabel(){
-        text.setText(formatDateTime.format(dateTime.getTime()));
-    }
-
-*/
     @Override
 
     protected void onPostCreate(Bundle savedInstanceState) {
