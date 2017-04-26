@@ -16,6 +16,7 @@ import android.widget.Button;
 public class MusicFragment extends Fragment {
 
 
+
     public MusicFragment() {
         // Required empty public constructor
     }
@@ -54,10 +55,18 @@ Button play,pause;
 
         });
 
+
+
+
+
+
         return rootView;
 
         //to play audio within fragment u must implement rootview
 
+
     }
+
+
 
 }

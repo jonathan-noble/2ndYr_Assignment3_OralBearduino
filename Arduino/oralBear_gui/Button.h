@@ -40,13 +40,19 @@ class Button {
   public:
     Button();
 
+   /*----functions are declared here----*/
     void drawButton();
+    
     bool hit(uint16_t xpos, uint16_t ypos);
+
+    void showButtonAndDraw(bool isVisible);
+    void activateButtonAndDraw(bool activate);
+    
     void (*callback)();
 
     Adafruit_GFX *gfx;
 
-    unsigned int x, y, width, height;
+    unsigned int x, y, width, height; //variables also used in UI.h
     int id;
     bool visible;
     bool active;
