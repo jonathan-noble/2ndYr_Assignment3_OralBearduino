@@ -2,20 +2,28 @@ package brushing.oral_bear_1;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.support.v7.widget.Toolbar;
 
 public class Web_ViewFragment extends Fragment {
+
+    //create variable for the toolbar
+    Toolbar toolbar;
+    //create var for action bar
+    ActionBarDrawerToggle actionBarDrawerToggle;
 
     public Web_ViewFragment() {
         // Required empty public constructor
     }
     //initialise webview
-    public WebView mWebView;
+    public static WebView mWebView;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
