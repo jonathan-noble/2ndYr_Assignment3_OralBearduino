@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 #include <String.h>
+#include "Debug.h"
 
 
 #define MAX_NUM_TIMERS  2
@@ -13,7 +14,6 @@ struct EEPROMSettings {
   int startState;
   int values[MAX_NUM_TIMERS];
 };
-
 
 
 class Settings {

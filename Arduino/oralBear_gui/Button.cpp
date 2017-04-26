@@ -7,58 +7,61 @@ Button::Button() {
 }
 
 void Button::drawButton() {
-  int x1, y1, w, h;
-  x1 = x;   //values of x and y are passed down here
+  int x1, y1, w, h, hw, hh;
+  x1 = x;
   y1 = y;
-  w = width / 2;
-  h = height / 2;
+  w = width;
+  h = height;
+  hw = w / 2;
+  hh = h / 2;
 
-  //if not pressed(or visible), then just fill the buttons into black
   if (!visible) {
-    gfx->fillRect(x1, y1, width - 2, height - 2, BLACK); // clear previous drawing
+    gfx->fillRect(x1 + 1, y1 + 1, w - 2, h - 2, BLACK); // clear previous drawing
     return;
   }
 
-  //draw screen frame
-
-  //draw frame
-  int frameColor = WHITE;
+  // draw frame
+  int frameColor = CYAN;
   if (active) {
     frameColor = GREEN;
   }
-
   //draw buttons
-  if (id != BACK_BTN) {
-    gfx->drawRoundRect(x1, y1 -60, width, height, BUTTON_RADIUS, frameColor);
+  if (id == TIMER_BTN || PAUSE_BTN || PLAY_BTN) {
+    gfx->drawRoundRect(x1, y1, w, h, BUTTON_RADIUS, frameColor);
+    gfx->fillRoundRect(x1, y1, w, h, BUTTON_RADIUS, WHITE);
   }
 
-   if (id == BACK_BTN) {
-    gfx->fillRect(15, 20, 40, 30, PURPLE);
-    gfx->drawRect(15, 20, 40, 30, WHITE);
-    gfx->setCursor(23, 27);
-    gfx->setTextColor(BLACK);
-    gfx->setTextSize(2.5);
-    gfx->print("<-");
+  if (id == PAUSE_BTN) {
+    gfx->fillRect(x1 + hw - 12, y1 + 7, 10, h - 16, YELLOW);
+    gfx->fillRect(x1 + hw + 2, y1 + 7, 10, h - 16, YELLOW);
+    return;
+  }
+  else if (id == PLAY_BTN) {
+    gfx->fillTriangle(x1 + 30, y1 + 7, x1 + 30, y1 + h - 7, x1 + w - 30, y1 + hh, GREEN);
     return;
   }
 
+  //The string inside the timer button
   String label;
-  if (id == MENU1_BTN) {
+  if (id == TIMER_BTN) {
     label = "TIMER";
   }
 
-  gfx->setTextColor(frameColor);
-  gfx->setCursor(x1, y1);
-  gfx->setTextSize(3);
+  gfx->setTextColor(BLACK);
+  gfx->setTextSize(1);
+  gfx->setCursor(x1 + 2, y1 + 35);
   gfx->print(label);
-  gfx->setTextColor(WHITE);
+
+  //Color for the timer
+  gfx->setTextColor(CYAN);
 
   if (!active) {
     frameColor = BLACK;
   }
 
   //Emphasise frame
-  gfx->drawRoundRect(x1 + 1, y1 + 1, width - 2, height - 2, BUTTON_RADIUS, frameColor); //60, 180, 200, 40, WHITE);
+  gfx->drawRoundRect(x1 + 1, y1 + 1, w - 2, h - 2, BUTTON_RADIUS, frameColor);
+  gfx->drawRoundRect(x1 + 2, y1 + 2, w - 4, h - 4, BUTTON_RADIUS, frameColor);
 
 }
 

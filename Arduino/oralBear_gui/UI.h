@@ -7,17 +7,16 @@
 
 //all inputs from button class is implemented here
 #include "Button.h"
+#include "Settings.h"
 /******************* UI details */
 
 #define NUM_BTNS     3
-//#define WELCOME_BTN  0
-#define MENU1_BTN    0
-#define TIMER1_BTN   1
-#define BACK_BTN     2
-
+#define TIMER_BTN   0
+#define PLAY_BTN     1
+#define PAUSE_BTN    2
 
 #define BUTTON_X_SPACING  10
-#define BUTTON_HEIGHT     60
+#define BUTTON_HEIGHT     50
 
 class UI {
   public:
@@ -27,20 +26,19 @@ class UI {
     void display();
 
     void updateContent(unsigned int newContent);
-    void showSplashScreen();
+    void showSplashScreen(String name, String version);
+    void showLoadingScreen();
+    void UI::showInstructionScreen();
 
     void checkBtnPressed();
     void addButton(int btnId, void (*callback)());
     void activateButton(int btnId);
 
-//    void welcomeScreen();
-//    void menuScreen();
-//    void timerScreen();
 
   private:
-    // Adafruit_GFX_Button buttons[15];    //used later since I'm leaning more on GFX vs TFT library
     //private pointer variables created hence the underscore for conventional purposes
     Button _buttons[NUM_BTNS];
+    Settings _settings;
     int _activeButtonId;
     unsigned int _content;
 
