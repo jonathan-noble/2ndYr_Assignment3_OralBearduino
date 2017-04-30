@@ -10,7 +10,7 @@
 struct EEPROMSettings {
   int version;
   int startState;
-  int values[maxTimer];
+  long values[maxTimer];
 };
 
 
@@ -19,11 +19,11 @@ public:
   Settings();
   
   void reset();
-  void save();
+ // void save();
   
   String getName();
   String getVersion();
-  int* getTimers();
+  long* getTimers();
   int getStartState();
   void setStartState(int startState);
   

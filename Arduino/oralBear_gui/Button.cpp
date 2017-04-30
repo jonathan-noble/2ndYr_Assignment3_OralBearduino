@@ -36,8 +36,9 @@ void Button::drawButton() {
     //  return;
   }
   if (id == PAUSE_BTN) {
-    gfx->fillRect(x1 + hw - 12, y1 + 7, 10, h - 16, YELLOW);
-    gfx->fillRect(x1 + hw + 2, y1 + 7, 10, h - 16, YELLOW);
+    gfx->fillRect(x1 + hw - 12, y1 + 7, 10, h - 16, RED);
+    gfx->fillRect(x1 + hw + 2, y1 + 7, 10, h - 16, RED);
+  
     return;
   }
   else if (id == PLAY_BTN) {

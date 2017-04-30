@@ -23,7 +23,7 @@
 
 //Starting number for new Content on timer
 UI::UI() {
-  _content = 1;
+  _content = -2;
 }
 
 void UI::init() {
@@ -67,15 +67,19 @@ void UI::checkBtnPressed() {
 }
 
 void UI::showSplashScreen(String name, String version) {
+
+  int hh = _gfx->height() / 2;
+  int hw = _gfx->width() / 2;
+
   _gfx->fillScreen(ORANGE);
 
-  _gfx->fillRect(_gfx->width() / 2 - 145, _gfx->height() / 2 - 45, 290, 105, PURPLE);
+  _gfx->fillRect(hw - 145, hh - 45, 290, 105, PURPLE);
   _gfx->setCursor(25, 115);
   _gfx->setTextColor(WHITE);
   _gfx->setTextSize(2);
   _gfx->print(name);
 
-  _gfx->setCursor(_gfx->width() / 2 - 40, 165);
+  _gfx->setCursor(hw - 40, 165);
   _gfx->setTextColor(WHITE);
   _gfx->setTextSize(2);
   _gfx->print(" v.");
@@ -83,6 +87,10 @@ void UI::showSplashScreen(String name, String version) {
 }
 
 void UI::showReminder1Screen() {
+
+  int hh = _gfx->height() / 2;
+  int hw = _gfx->width() / 2;
+
   _gfx->fillScreen(TEAL);
 
   _gfx->fillRect(0, 0, _gfx->width(), 50, BLUE);
@@ -93,7 +101,7 @@ void UI::showReminder1Screen() {
   _gfx->setCursor(70, 40);
   _gfx->print("FOR 120 SECONDS");
 
-  _gfx->fillRect(0, _gfx->height() / 2 + 25, _gfx->width(), 50, BLUE);
+  _gfx->fillRect(0, hh + 25, _gfx->width(), 50, BLUE);
   _gfx->setCursor(60, 165);
   _gfx->setTextColor(WHITE);
   _gfx->setTextSize(1);
@@ -103,6 +111,10 @@ void UI::showReminder1Screen() {
 }
 
 void UI::showReminder2Screen() {
+
+  int hh = _gfx->height() / 2;
+  int hw = _gfx->width() / 2;
+
   _gfx->fillScreen(DARKGREEN);
 
   _gfx->fillRect(0, 60, _gfx->width(), 50, MAGENTA);
@@ -111,7 +123,7 @@ void UI::showReminder2Screen() {
   _gfx->setTextSize(1);
   _gfx->print("BRUSH TWICE A DAY");
 
-  _gfx->fillRect(0, _gfx->height() / 2 + 15, _gfx->width(), 50, MAGENTA);
+  _gfx->fillRect(0, hh + 15, _gfx->width(), 50, MAGENTA);
   _gfx->setCursor(57, 165);
   _gfx->setTextColor(WHITE);
   _gfx->setTextSize(1);
@@ -119,20 +131,24 @@ void UI::showReminder2Screen() {
 }
 
 void UI::showInstructionScreen() {
+
+  int hh = _gfx->height() / 2;
+  int hw = _gfx->width() / 2;
+
   _gfx->fillScreen(RED);
 
-  _gfx->fillRect(_gfx->width() / 2 - 130, _gfx->height() / 2 - 60, 255, 85, DARKGREEN);
+  _gfx->fillRect(hw - 130, hh - 60, 255, 85, DARKGREEN);
   _gfx->setCursor(30, 70);
   _gfx->setTextColor(WHITE);
 
   //Print Instruction on a random generated code
   int i = rand() % 6 + 1;
   if (i == 1 || i == 2 ) {
-    _gfx->setCursor(_gfx->width() /2 - 125, _gfx->height() / 2 - 20);
+    _gfx->setCursor(hw - 125, hh - 20);
     _gfx->setTextColor(WHITE);
     _gfx->setTextSize(2);
     _gfx->print("LET'S COUNT");
-    _gfx->setCursor(_gfx->width()/2 - 113, _gfx->height() / 2 + 10);
+    _gfx->setCursor(hw - 113, hh + 10);
     _gfx->print("TOGETHER!");
 
   }
@@ -150,7 +166,7 @@ void UI::showInstructionScreen() {
 }
 
 //Refreshes the screen for the timer since LCD requires update per millis change
-void UI::updateContent(unsigned int newContent) {
+void UI::updateContent(unsigned long newContent) {
   if (_content == newContent)  {
     return;
   }
@@ -159,20 +175,38 @@ void UI::updateContent(unsigned int newContent) {
   int hw = _gfx->width() / 2;
 
   // clear former content
-  _gfx->fillRect(hw - 73, hh - 20, 85, 40, PURPLE);
+  _gfx->fillRect(hw - 100, hh - 25, 125, 50, PURPLE);
 
   //ensures that when timer is on 10s+, the number will go back to its original position
   int offset = 0;
+  int offset2 = 0;
   if (newContent < 100) {
     offset = 20;
   }
 
+  if (newContent < 1000) {
+    offset2 = 20;
+  }
+
   _gfx->setTextColor(CYAN);
-  _gfx->setCursor(hw - 75 + offset, hh + 10);
-  _gfx->setTextSize(2);
-  _gfx->print(newContent / 10.0);
+  _gfx->setCursor(hw - 65 + offset + offset2, hh + 20);
+  _gfx->setTextSize(3);
+  _gfx->print(newContent / 10);
 
   _content = newContent;
+
+
+  if (newContent > 1200) {
+    _gfx->setTextColor(PURPLE);
+    _gfx->setCursor(60, 80);
+    _gfx->setTextSize(1);
+    _gfx->print("Time's up! Good job!");
+  }
+  else {
+    _gfx->fillRect(0, 65, _gfx->width(), 25, YELLOW);
+  }
+
+
 }
 
 //Calling back the parameters of the functions from the main
@@ -259,7 +293,6 @@ void UI::display() {
     _buttons[i].drawButton();
   }
 
-  _gfx->drawChar(_gfx->width() / 2 + 25, _gfx->height() / 2 + 10, 's', CYAN, BLACK, 2);
-
+  _gfx->drawChar(_gfx->width() / 2 + 25, _gfx->height() / 2 + 20, 's', CYAN, BLACK, 2);
 }
 

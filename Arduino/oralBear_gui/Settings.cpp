@@ -18,18 +18,18 @@ Settings::Settings() {
 }
 
 void Settings::reset() {
-    // read from EEPROM
+  // read from EEPROM
   _currentSettings.version = CURRENT_VERSION;
   //Values of the duration of the timer varies
-  _currentSettings.startState = 10;
+  _currentSettings.startState = 0;
   _currentSettings.values[0] = 50;
-  save();
+  //  save();
 }
 
-
-void Settings::save() {
-  EEPROM.put(0, _currentSettings);
-}
+//potential function to save the previous timer or the state
+//void Settings::save() {
+//  EEPROM.put(0, _currentSettings);
+//}
 
 
 int Settings::getStartState() {
@@ -38,7 +38,7 @@ int Settings::getStartState() {
 
 void Settings::setStartState(int startState) {
   _currentSettings.startState = startState;
-  save();
+  // save();
 }
 
 String Settings::getName() {
@@ -49,7 +49,7 @@ String Settings::getVersion() {
   return String(_currentSettings.version);
 }
 
-int* Settings::getTimers() {
+long* Settings::getTimers() {
   return _currentSettings.values;
 }
 

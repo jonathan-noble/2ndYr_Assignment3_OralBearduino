@@ -25,7 +25,7 @@ class UI {
     void init();
     void display();
 
-    void updateContent(unsigned int newContent);
+    void updateContent(unsigned long newContent);
     void showSplashScreen(String name, String version);
     void showReminder1Screen();
     void showReminder2Screen();
