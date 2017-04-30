@@ -8,10 +8,10 @@
 //all inputs from button class is implemented here
 #include "Button.h"
 #include "Settings.h"
-/******************* UI details */
 
+/******************* Button UI details */
 #define NUM_BTNS     3
-#define TIMER_BTN   0
+#define TIMER_BTN    0
 #define PLAY_BTN     1
 #define PAUSE_BTN    2
 
@@ -27,8 +27,9 @@ class UI {
 
     void updateContent(unsigned int newContent);
     void showSplashScreen(String name, String version);
-    void showLoadingScreen();
-    void UI::showInstructionScreen();
+    void showReminder1Screen();
+    void showReminder2Screen();
+    void showInstructionScreen();
 
     void checkBtnPressed();
     void addButton(int btnId, void (*callback)());

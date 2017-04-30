@@ -16,27 +16,35 @@ void Button::drawButton() {
   hh = h / 2;
 
   if (!visible) {
-    gfx->fillRect(x1 + 1, y1 + 1, w - 2, h - 2, BLACK); // clear previous drawing
+    gfx->fillRect(x1 + 1, y1 + 1, w - 2, h - 2, PURPLE); // clear previous drawing
     return;
   }
 
   // draw frame
-  int frameColor = CYAN;
+  int frameColor = LIGHTGREY;
   if (active) {
-    frameColor = GREEN;
+    frameColor = YELLOW;
   }
   //draw buttons
-  if (id == TIMER_BTN || PAUSE_BTN || PLAY_BTN) {
+  if (id == PAUSE_BTN || PLAY_BTN) {
     gfx->drawRoundRect(x1, y1, w, h, BUTTON_RADIUS, frameColor);
     gfx->fillRoundRect(x1, y1, w, h, BUTTON_RADIUS, WHITE);
   }
 
+  if (id == TIMER_BTN) {
+    gfx->fillRoundRect(x1, y1, w, h, BUTTON_RADIUS, PURPLE);
+    //  return;
+  }
   if (id == PAUSE_BTN) {
     gfx->fillRect(x1 + hw - 12, y1 + 7, 10, h - 16, YELLOW);
     gfx->fillRect(x1 + hw + 2, y1 + 7, 10, h - 16, YELLOW);
     return;
   }
   else if (id == PLAY_BTN) {
+    gfx->setTextColor(PURPLE);
+    gfx->setCursor(x1 - 50, y1 - 15);
+    gfx->setTextSize(1);
+    gfx->print("PRESS ME TO START!");
     gfx->fillTriangle(x1 + 30, y1 + 7, x1 + 30, y1 + h - 7, x1 + w - 30, y1 + hh, GREEN);
     return;
   }
@@ -44,16 +52,16 @@ void Button::drawButton() {
   //The string inside the timer button
   String label;
   if (id == TIMER_BTN) {
-    label = "TIMER";
+    label = "DON'T RUSH WHEN YOU BRUSH!";
   }
 
-  gfx->setTextColor(BLACK);
+  gfx->setTextColor(WHITE);
   gfx->setTextSize(1);
-  gfx->setCursor(x1 + 2, y1 + 35);
+  gfx->setCursor(x1 + 10, y1 + 25);
   gfx->print(label);
 
   //Color for the timer
-  gfx->setTextColor(CYAN);
+  gfx->setTextColor(WHITE);
 
   if (!active) {
     frameColor = BLACK;
@@ -65,7 +73,7 @@ void Button::drawButton() {
 
 }
 
-
+//Animates the button when they are clicked
 void Button::animateButtonClick() {
   if (!visible) {
     return;

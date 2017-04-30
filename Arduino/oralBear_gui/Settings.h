@@ -5,14 +5,12 @@
 #include <String.h>
 #include "Debug.h"
 
-
-#define MAX_NUM_TIMERS  2
-
+#define maxTimer 1
 
 struct EEPROMSettings {
   int version;
   int startState;
-  int values[MAX_NUM_TIMERS];
+  int values[maxTimer];
 };
 
 

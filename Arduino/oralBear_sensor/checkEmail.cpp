@@ -1,9 +1,9 @@
 #include "checkEmail.h"
 #include <ESP8266WiFi.h>  // the ESP8266WiFi.h  lib
-const char* SSID = "eir04969720-2.4G"; //"poop";
-const char* PASS = "w5hgmmyg"; //"piapiapia";
+//ONLY WORKS ON 3G + HOME-NETWORK. EDUROAM HAVE A DIFFERENT AUTHENTICATIONS
+const char* SSID = "poop";//"eir04969720-2.4G"; 
+const char* PASS = "piapiapia"; //w5hgmmyg"; 
 char server[] = "mail.smtp2go.com";
-
 
 WiFiClient client;
 

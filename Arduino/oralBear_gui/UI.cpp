@@ -2,10 +2,7 @@
 #include "Debug.h"
 
 #if defined(_GFXFONT_H_)           //are we using the new library?
-#include <Fonts/FreeSansBold18pt7b.h>
-#define ADJ_BASELINE 11            //new fonts setCursor to bottom of letter
-#else
-#define ADJ_BASELINE 0             //legacy setCursor to top of letter
+#include <Fonts/FreeSansBold9pt7b.h>
 #endif
 #include <MCUFRIEND_kbv.h>
 
@@ -24,10 +21,9 @@
 #define MINPRESSURE 5
 #define MAXPRESSURE 1000
 
-
-
+//Starting number for new Content on timer
 UI::UI() {
-  _content = -1;
+  _content = 1;
 }
 
 void UI::init() {
@@ -40,7 +36,7 @@ void UI::init() {
 
   _gfx->fillScreen(WHITE);
 #if defined(_GFXFONT_H_)
-  _gfx->setFont(&FreeSansBold18pt7b);
+  _gfx->setFont(&FreeSansBold9pt7b);
 #endif
   _ts = new TouchScreen(XP, YP, XM, YM, 300);
 
@@ -59,6 +55,8 @@ void UI::checkBtnPressed() {
     p.x = map(p.x, TS_MAXX, TS_MINX, 0, _gfx->width());
     p.y = map(p.y, TS_MAXY, TS_MINY, 0, _gfx->height());
 
+
+    //Loop goes through every buttons possible and checks that all the buttons are hit
     for (int i = TIMER_BTN; i < NUM_BTNS; i++) {
       if (_buttons[i].hit(p.x, p.y)) {
         break;
@@ -68,75 +66,80 @@ void UI::checkBtnPressed() {
   }
 }
 
-
-void UI::updateContent(unsigned int newContent) {
-  if (_content == newContent)  {
-    return;
-  }
-  int hh = _gfx->height() / 2;
-  int hw = _gfx->width() / 2;
-
-  // clear former content
-  _gfx->fillRect(hw - 58, hh - 22, 70, 30, BLACK);
-
-  int offset = 0;
-  if (newContent < 100) {
-    offset = 20;
-  }
-
-  _gfx->setCursor(hw - 55 + offset, hh + 5);
-  _gfx->print(newContent / 10.0, 1);
-
-  _content = newContent;
-}
-
 void UI::showSplashScreen(String name, String version) {
   _gfx->fillScreen(ORANGE);
 
-  _gfx->setCursor(30, 100);
+  _gfx->fillRect(_gfx->width() / 2 - 145, _gfx->height() / 2 - 45, 290, 105, PURPLE);
+  _gfx->setCursor(25, 115);
   _gfx->setTextColor(WHITE);
+  _gfx->setTextSize(2);
   _gfx->print(name);
 
-  _gfx->setCursor(_gfx->width() / 2 - 40, 150);
+  _gfx->setCursor(_gfx->width() / 2 - 40, 165);
   _gfx->setTextColor(WHITE);
+  _gfx->setTextSize(2);
   _gfx->print(" v.");
   _gfx->print(version);
 }
 
-void UI::showLoadingScreen() {
-  _gfx->fillScreen(DARKCYAN);
+void UI::showReminder1Screen() {
+  _gfx->fillScreen(TEAL);
 
-  _gfx->setCursor(_gfx->width() / 2 - 70, 70);;
+  _gfx->fillRect(0, 0, _gfx->width(), 50, BLUE);
+  _gfx->setCursor(60, 20);
   _gfx->setTextColor(WHITE);
-  _gfx->print("Loading");
+  _gfx->setTextSize(1.5);
+  _gfx->print("BRUSH YOUR TEETH");
+  _gfx->setCursor(70, 40);
+  _gfx->print("FOR 120 SECONDS");
 
-  //Print Loading
-  _gfx->setCursor(10, 150);
+  _gfx->fillRect(0, _gfx->height() / 2 + 25, _gfx->width(), 50, BLUE);
+  _gfx->setCursor(60, 165);
   _gfx->setTextColor(WHITE);
-  _gfx->print("the Timer 4 u Luv!");
+  _gfx->setTextSize(1);
+  _gfx->print("So your teeth will be");
+  _gfx->setCursor(57, 185);
+  _gfx->print("clean and cavity free!");
+}
+
+void UI::showReminder2Screen() {
+  _gfx->fillScreen(DARKGREEN);
+
+  _gfx->fillRect(0, 60, _gfx->width(), 50, MAGENTA);
+  _gfx->setCursor(60, 90);
+  _gfx->setTextColor(WHITE);
+  _gfx->setTextSize(1);
+  _gfx->print("BRUSH TWICE A DAY");
+
+  _gfx->fillRect(0, _gfx->height() / 2 + 15, _gfx->width(), 50, MAGENTA);
+  _gfx->setCursor(57, 165);
+  _gfx->setTextColor(WHITE);
+  _gfx->setTextSize(1);
+  _gfx->print("MORNING AND NIGHT");
 }
 
 void UI::showInstructionScreen() {
-  _gfx->fillScreen(DARKGREEN);
+  _gfx->fillScreen(RED);
 
-  _gfx->setCursor(30, 70);;
+  _gfx->fillRect(_gfx->width() / 2 - 130, _gfx->height() / 2 - 60, 255, 85, DARKGREEN);
+  _gfx->setCursor(30, 70);
   _gfx->setTextColor(WHITE);
-  _gfx->print("Tip:");
 
   //Print Instruction on a random generated code
   int i = rand() % 6 + 1;
   if (i == 1 || i == 2 ) {
-    _gfx->setCursor(30, 150);
+    _gfx->setCursor(_gfx->width() /2 - 125, _gfx->height() / 2 - 20);
     _gfx->setTextColor(WHITE);
-    _gfx->print("Toothbrush for ");
-    _gfx->setCursor(75, 220);
-    _gfx->print("120-150s!");
+    _gfx->setTextSize(2);
+    _gfx->print("LET'S COUNT");
+    _gfx->setCursor(_gfx->width()/2 - 113, _gfx->height() / 2 + 10);
+    _gfx->print("TOGETHER!");
 
   }
   else if (i == 3 || i == 4) {
     _gfx->setCursor(5, 150);
     _gfx->setTextColor(WHITE);
-    _gfx->print("Brush teeth on circle motion!");
+    _gfx->print("I'LL COUNT WITH YOU!");
   }
   else if (i == 5 || i == 6) {
     _gfx->setCursor(10, 150);
@@ -146,12 +149,38 @@ void UI::showInstructionScreen() {
 
 }
 
+//Refreshes the screen for the timer since LCD requires update per millis change
+void UI::updateContent(unsigned int newContent) {
+  if (_content == newContent)  {
+    return;
+  }
+
+  int hh = _gfx->height() / 2;
+  int hw = _gfx->width() / 2;
+
+  // clear former content
+  _gfx->fillRect(hw - 73, hh - 20, 85, 40, PURPLE);
+
+  //ensures that when timer is on 10s+, the number will go back to its original position
+  int offset = 0;
+  if (newContent < 100) {
+    offset = 20;
+  }
+
+  _gfx->setTextColor(CYAN);
+  _gfx->setCursor(hw - 75 + offset, hh + 10);
+  _gfx->setTextSize(2);
+  _gfx->print(newContent / 10.0);
+
+  _content = newContent;
+}
+
 //Calling back the parameters of the functions from the main
 void UI::addButton(int btnId, void (*callback)()) {
   _buttons[btnId].callback = callback;
 }
 
-//Determines the visibility and activation of the button
+//Functionality of the buttons
 void UI::activateButton(int btnId) {
   if (btnId == TIMER_BTN) {
     _buttons[_activeButtonId].activateButtonAndDraw(false);
@@ -179,7 +208,7 @@ void UI::activateButton(int btnId) {
       _buttons[i].enabled = false;
     }
     _buttons[PAUSE_BTN].enabled = _buttons[PAUSE_BTN].visible = true;
-    _buttons[PLAY_BTN].visible = false;
+    _buttons[PLAY_BTN].visible = true;
 
     _buttons[PLAY_BTN].drawButton();
     _buttons[PAUSE_BTN].drawButton();
@@ -187,30 +216,32 @@ void UI::activateButton(int btnId) {
   }
 }
 
-
+//All the buttons' attributes are called here
 void UI::display() {
-  _gfx->fillScreen(BLACK);                 //Erase the screen
+  _gfx->fillScreen(PURPLE);                //Erase the screen
   _gfx->drawRect(0, 0, 319, 240, WHITE);   //Draw white frame
+  _gfx->fillRect(0, 65, _gfx->width(), 25, YELLOW);
+  _gfx->fillRect(0, 157, _gfx->width(), 25, YELLOW);
 
   int btnW = _gfx->width() / 3 - 8;
   int btnH = _gfx->height();
 
-  _buttons[TIMER_BTN].x = btnW + BUTTON_X_SPACING - 15;
-  _buttons[TIMER_BTN].y = 1;
-  _buttons[TIMER_BTN].width = btnW + 20;
-  _buttons[TIMER_BTN].height = BUTTON_HEIGHT;
+  _buttons[TIMER_BTN].x = btnW + BUTTON_X_SPACING - 108;
+  _buttons[TIMER_BTN].y = 10;
+  _buttons[TIMER_BTN].width = btnW + 221;
+  _buttons[TIMER_BTN].height = BUTTON_HEIGHT - 10;
   _buttons[TIMER_BTN].visible = true;
   _buttons[TIMER_BTN].active = false;
   _buttons[TIMER_BTN].enabled = true;
   _buttons[TIMER_BTN].id = TIMER_BTN;
 
-  _buttons[PLAY_BTN].x = _buttons[TIMER_BTN].x + 10;
+  _buttons[PLAY_BTN].x = _buttons[TIMER_BTN].x + 100;
   _buttons[PLAY_BTN].y = btnH - BUTTON_HEIGHT - 1;
   _buttons[PLAY_BTN].width = btnW;
   _buttons[PLAY_BTN].height = BUTTON_HEIGHT;
   _buttons[PLAY_BTN].visible = true;
   _buttons[PLAY_BTN].active = false;
-  _buttons[PLAY_BTN].enabled = false;
+  _buttons[PLAY_BTN].enabled = true;
   _buttons[PLAY_BTN].id = PLAY_BTN;
 
   _buttons[PAUSE_BTN].x = _buttons[PLAY_BTN].x;
@@ -228,7 +259,7 @@ void UI::display() {
     _buttons[i].drawButton();
   }
 
-  _gfx->drawChar(_gfx->width() / 2 + 25, _gfx->height() / 2 + 5, 's', CYAN, BLACK, 1);
+  _gfx->drawChar(_gfx->width() / 2 + 25, _gfx->height() / 2 + 10, 's', CYAN, BLACK, 2);
 
 }
 

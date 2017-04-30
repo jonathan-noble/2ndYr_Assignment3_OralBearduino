@@ -18,12 +18,12 @@ void loop()
 {
   sensorValue = analogRead(sensorPin);
 
-  if (sensorValue >= 35) {
+  if (sensorValue > 5) {
     byte ret = chk.sendEmail(sensorValue);
   }
 
   delay(sensorValue);
-  //delay(180000);  // wait for 3 minutes
+  //  delay(180000);  // wait for 3 minutes
 
 }
 

@@ -2,8 +2,9 @@
     User interface touch-screen for Oral Bearduino
     that will be displayed on the TFT LCD screen!
     1. Splash Screen
-    2. Tips on how to brush teeth with Timer
-    3. Timer
+    2. Reminder to shake the hand to notify through e-mail
+    3. Tips on how to brush teeth with Timer
+    4. Timer
 */
 
 #include <Arduino.h>
@@ -41,26 +42,29 @@ void setup() {
 
   ui.init();
 
-  ui.showSplashScreen(settings.getName(), settings.getVersion());
+  //ui.showSplashScreen(settings.getName(), settings.getVersion());
 
   ui.addButton(TIMER_BTN, onTimerClick);
   ui.addButton(PLAY_BTN, onPlayClick);
   ui.addButton(PAUSE_BTN, onPauseClick);
 
+
   currentState = settings.getStartState();
   if (currentState == TIMER_BTN ) {
     currentTimerValue = settings.getTimers()[currentState - 1];
   }
-
-  delay(1500);
-  ui.showLoadingScreen();
-  delay(2000);
-  ui.showInstructionScreen();
-  delay(5000);
-
+//
+//  delay(1500);
+//  ui.showReminder1Screen();
+//  delay(3000);
+//  ui.showReminder2Screen();
+//  delay(3000);
+//  ui.showInstructionScreen();
+//  delay(2500);
   ui.display();
 
   ui.activateButton(PLAY_BTN);
+
   ui.activateButton(currentState);
 
   ui.updateContent(currentTimerValue);
@@ -128,11 +132,11 @@ void onPlayClick() {
   if (currentState == TIMER_BTN) {
     if (pause) {
       // continue
-      targetTime -= currentTimerValue * 100;
+      targetTime -= currentTimerValue * 200;
     }
   }
   else {
-    targetTime += currentTimerValue * 100;
+    targetTime += currentTimerValue * 200;
   }
 }
 

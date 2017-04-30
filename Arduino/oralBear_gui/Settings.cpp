@@ -10,7 +10,6 @@
 
 Settings::Settings() {
   // read from EEPROM
-  
   EEPROM.get(0, _currentSettings);
 
   if (_currentSettings.version != CURRENT_VERSION) {
@@ -21,10 +20,9 @@ Settings::Settings() {
 void Settings::reset() {
     // read from EEPROM
   _currentSettings.version = CURRENT_VERSION;
-  _currentSettings.startState = 0;
+  //Values of the duration of the timer varies
+  _currentSettings.startState = 10;
   _currentSettings.values[0] = 50;
-  _currentSettings.values[1] = 100;
-
   save();
 }
 
