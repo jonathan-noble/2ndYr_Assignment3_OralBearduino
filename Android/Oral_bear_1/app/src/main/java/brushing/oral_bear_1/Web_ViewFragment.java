@@ -42,7 +42,7 @@ public class Web_ViewFragment extends Fragment {
 // Force links and redirects to open in the WebView instead of in a browser
         mWebView.setWebViewClient(new WebViewClient());
 
-        mWebView.loadUrl("https://google.com");
+        mWebView.loadUrl("https://mail.google.com/mail/u/0/#inbox");
         return rootView;
     }
 
