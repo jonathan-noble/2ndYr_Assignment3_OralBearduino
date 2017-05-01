@@ -8,17 +8,8 @@
     <string name="reminder_fragment">Set a reminder</string>
     <string name="tutorial_fragment">Watch tutorials</string>
 
-    <string name="long_string">6 steps for brushing teeth
-        with your child</string>
 
-    <string name="long_string2">
-        Children need an adult to assist with thorough brushing until they are 8 or 9 years old. Let them have a turn and then Mum or Dad have a turn to ensure teeth are clean.
+    <string name="instruct_str">BRUSH TEETH FOR 2 MINUTES.</string>
 
-Teeth can be brushed twice daily with fluoride containing toothpaste. A small, soft bristled brush is ideal for children. Regular daily flossing can start as soon as two teeth are in contact.
-        with your child</string>
-
-    <string name="instruct_str">MAKE SURE TO BRUSH YOUR TEETH FOR A GOOD 2 MINUTES</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

@@ -1,9 +1,10 @@
-<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:paddingTop="50dp"
     tools:context="brushing.oral_bear_1.TutorialFragment">
 
 
@@ -12,7 +13,7 @@
         android:layout_height="match_parent"
         android:background="@color/colorPrimary"
 
-        android:paddingTop="30dp">
+        >
 
 
         <!-- TODO: Update blank fragment layout -->
@@ -45,22 +46,22 @@
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/child_ins"
-            android:layout_below="@+id/imageView"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="42dp" />
+            android:layout_below="@+id/imageView"
+            android:layout_marginTop="42dp"
+            app:srcCompat="@drawable/child_ins" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/imageView"
+            android:layout_centerHorizontal="true"
             android:text="Brushing your child's teeth"
             android:textColor="@android:color/background_light"
             android:textSize="24sp"
-            android:textStyle="bold"
-            android:layout_below="@+id/imageView"
-            android:layout_centerHorizontal="true" />
+            android:textStyle="bold" />
     </RelativeLayout>
 
 
