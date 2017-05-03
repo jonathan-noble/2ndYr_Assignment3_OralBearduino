@@ -85,4 +85,15 @@ With the objective in mind, our Android App - named after the project -  was mad
     - Debug.h for debugging purposes
     - UI.cpp/h for the splash screens and the UI design of the screen
 
+*LCD Screen screenshots:
+
+![img_0017](https://cloud.githubusercontent.com/assets/18444618/25666713/33d12d50-3019-11e7-880b-09b8921300f9.JPG)
+![img_0019](https://cloud.githubusercontent.com/assets/18444618/25666709/33886700-3019-11e7-995f-7e99ad53199d.JPG)
+![img_0018](https://cloud.githubusercontent.com/assets/18444618/25666708/33821102-3019-11e7-81bd-9df804d27bd4.JPG)
+![img_0020](https://cloud.githubusercontent.com/assets/18444618/25666711/33a4f708-3019-11e7-9c90-a365008c7794.JPG)
+![img_0021](https://cloud.githubusercontent.com/assets/18444618/25666712/33b2d2e2-3019-11e7-8eaa-3e6818151ce0.JPG)
+
+
+
+
 
