@@ -24,19 +24,21 @@ We then came up to the conclusion that we will use the platform of Arduino and d
 
 ## Hardware Specs 
 * Usage of Genymotion Emulator for Android App
-* TFT LCD Screen:
+
+* TFT LCD Screen: 
+    ![img_3417](https://cloud.githubusercontent.com/assets/18444618/25657799/8b7efa04-2ff7-11e7-839d-c56852fa35b4.JPG)
+    
   * Arduino Uno
+    ![img_3424](https://cloud.githubusercontent.com/assets/18444618/25657861/d7437686-2ff7-11e7-818e-778fa2030904.JPG)
+    
 * Wemos D1-mini with an ESP8266 WiFi Module:
+
   * Vibration Switch Sensor
   * Resistor
   * Jumper Wires
   * Breadboard
-  
-  ![img_3417](https://cloud.githubusercontent.com/assets/18444618/25657799/8b7efa04-2ff7-11e7-839d-c56852fa35b4.JPG)
- 
-  ![img_3424](https://cloud.githubusercontent.com/assets/18444618/25657861/d7437686-2ff7-11e7-818e-778fa2030904.JPG)
-  
-  ![img_3432](https://cloud.githubusercontent.com/assets/18444618/25657895/044f9736-2ff8-11e7-8752-721977766cfe.JPG)
+     ![img_3432](https://cloud.githubusercontent.com/assets/18444618/25657895/044f9736-2ff8-11e7-8752-721977766cfe.JPG)
+
 
 
 
@@ -56,31 +58,37 @@ With the objective in mind, our Android App - named after the project -  was mad
 * Git fetching-> merging/rebasing from an upstream branch was also another challenge in the beginning
 
 
-## Features
+## Features that we're proud of
 #### 
-* Android App:
-   * Jukebox on Home Page
-   * Tutorial Page
-   * E-mail 
-   
-*App screenshots:
-
-![drawer](https://cloud.githubusercontent.com/assets/18444618/25658366/6ac5ae22-2ffa-11e7-92f6-0c6066334560.JPG)
-
-![playmusic](https://cloud.githubusercontent.com/assets/18444618/25658368/6acaa364-2ffa-11e7-8ec7-6740983d6b32.JPG)
-
-![email](https://cloud.githubusercontent.com/assets/18444618/25658367/6ac666e6-2ffa-11e7-8b78-7e3718481949.JPG)
-
-![tut](https://cloud.githubusercontent.com/assets/18444618/25658365/6ac221a8-2ffa-11e7-9dbc-6d298329c59a.JPG)
-
-
+* __Android App__:
+  * Navigation Drawbar with Fragments:
+    * Jukebox on Home Page
+    * E-mail 
+    * Tutorial Page
+    
+    
+  * App Screenshots:
+  
+  
+      ![drawer](https://cloud.githubusercontent.com/assets/18444618/25658366/6ac5ae22-2ffa-11e7-92f6-0c6066334560.JPG)
+      ![playmusic](https://cloud.githubusercontent.com/assets/18444618/25658368/6acaa364-2ffa-11e7-8ec7-6740983d6b32.JPG)
+      ![email](https://cloud.githubusercontent.com/assets/18444618/25658367/6ac666e6-2ffa-11e7-8b78-7e3718481949.JPG)
+      ![tut](https://cloud.githubusercontent.com/assets/18444618/25658365/6ac221a8-2ffa-11e7-9dbc-6d298329c59a.JPG)
 
 * Wemos D1- Mini:
   * The controller uses the ESP8266 to send an email once the vibration switch sensor reads an analogue input
+  * C/C++ header files used:
+    - checkEmail.cpp/h for the responseCode to check availability of network. It also has the function to send the Email through the encoded base64 SMTP server when vibration has been detected
+  
   
 
 * TFT LCD Screen
-  * Tips Advices on Splash Screens
+  * Tips & Advices on Splash Screens
   * Stop Watch for the recommended 2 minutes!
+  * C/C++ header files used:
+    - Buttons.cpp/h which creates/animates/activates/error-checks the buttons
+    - Settings.cpp/h for the EEPROM library to save/reset/default values
+    - Debug.h for debugging purposes
+    - UI.cpp/h for the splash screens and the UI design of the screen
 
 
