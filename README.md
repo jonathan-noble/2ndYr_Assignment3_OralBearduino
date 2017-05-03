@@ -23,16 +23,16 @@ We then came up to the conclusion that we will use the platform of Arduino and d
 
 
 ## Hardware Specs 
-* Usage of Genymotion Emulator for Android App
+* __Usage of Genymotion Emulator for Android App__
 
-* Stuff Toy with the following hardware embodied:
+* __Stuff Toy with the following hardware embodied__:
    *  TFT LCD Screen: 
       *  ![img_3417](https://cloud.githubusercontent.com/assets/18444618/25657799/8b7efa04-2ff7-11e7-839d-c56852fa35b4.JPG)
     
     * Arduino Uno
       * ![img_3424](https://cloud.githubusercontent.com/assets/18444618/25657861/d7437686-2ff7-11e7-818e-778fa2030904.JPG)
     
-* Wemos D1-mini with an ESP8266 WiFi Module:
+* __Wemos D1-mini with an ESP8266 WiFi Module__:
      ![img_3432](https://cloud.githubusercontent.com/assets/18444618/25657895/044f9736-2ff8-11e7-8752-721977766cfe.JPG)
   * Vibration Switch Sensor
   * Resistor
@@ -53,13 +53,11 @@ With the objective in mind, our Android App - named after the project -  was mad
 * Usage of base64 for encoding username and password from the SMTP server
 * Git fetching-> merging/rebasing from an upstream branch was also another challenge in the beginning
 
-
-## Features that we're proud of
-#### 
+## Features
 * __Android App__:
   * Navigation Drawbar with Fragments:
-    * Jukebox on Home Page
-    * E-mail 
+    * Music Player on Home Page
+    * E-mail Web View
     * Tutorial Page
     
     
@@ -94,6 +92,11 @@ With the objective in mind, our Android App - named after the project -  was mad
 ![img_0021](https://cloud.githubusercontent.com/assets/18444618/25666712/33b2d2e2-3019-11e7-8eaa-3e6818151ce0.JPG)
 
 
+## Conclusion & What we're proud of
+We are very proud of getting out of our comfort zone. This year we learned how to make a scifi UI, a game and now something completely different and something that we believe in the future will make a huge impact on other people's lives, of course there is definitely room for improvement for this project but we can not wait to showcase it with more cool features.  
 
+Runners experience a euphoria known as runners high. Programming definitely creates similar feeling. All those sleepless nights brainstorming for ideas, coding, debugging. 
+
+It was a surreal experience to be able to put our knowledge into something useful.
 
 
