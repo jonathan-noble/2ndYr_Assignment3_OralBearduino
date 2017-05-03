@@ -62,6 +62,19 @@ With the objective in mind, our Android App - named after the project -  was mad
    * Jukebox on Home Page
    * Tutorial Page
    * E-mail 
+   
+*App screenshots:
+
+![drawer](https://cloud.githubusercontent.com/assets/18444618/25658366/6ac5ae22-2ffa-11e7-92f6-0c6066334560.JPG)
+
+![playmusic](https://cloud.githubusercontent.com/assets/18444618/25658368/6acaa364-2ffa-11e7-8ec7-6740983d6b32.JPG)
+
+![email](https://cloud.githubusercontent.com/assets/18444618/25658367/6ac666e6-2ffa-11e7-8b78-7e3718481949.JPG)
+
+![tut](https://cloud.githubusercontent.com/assets/18444618/25658365/6ac221a8-2ffa-11e7-9dbc-6d298329c59a.JPG)
+
+
+
 * Wemos D1- Mini:
   * The controller uses the ESP8266 to send an email once the vibration switch sensor reads an analogue input
   
