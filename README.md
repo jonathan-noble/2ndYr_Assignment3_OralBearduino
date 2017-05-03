@@ -6,7 +6,7 @@ sacrifice and most of all, love of what you are doing or learning to do. "
 
 ## Infomercial Video of our Project
 
-[![Video](http://img.youtube.com/vi/L_IXU5uO1O4/0.jpg)](https://youtu.be/L_IXU5uO1O4"Video")
+[![Video](http://img.youtube.com/vi/L_IXU5uO1O4/0.jpg)](https://www.youtube.com/watch?v=L_IXU5uO1O4&t=5s"Video")
 
 
 ## Group Details
