@@ -6,6 +6,8 @@ sacrifice and most of all, love of what you are doing or learning to do. "
 
 ## Infomercial Video of our Project
 
+[![Video](http://img.youtube.com/vi/L_IXU5uO1O4/0.jpg)](https://youtu.be/L_IXU5uO1O4"Video")
+
 
 ## Group Details
 | Name | Student No. | Student Email 
@@ -29,6 +31,15 @@ We then came up to the conclusion that we will use the platform of Arduino and d
   * Resistor
   * Jumper Wires
   * Breadboard
+  
+  ![img_3417](https://cloud.githubusercontent.com/assets/18444618/25657799/8b7efa04-2ff7-11e7-839d-c56852fa35b4.JPG)
+ 
+  ![img_3424](https://cloud.githubusercontent.com/assets/18444618/25657861/d7437686-2ff7-11e7-818e-778fa2030904.JPG)
+  
+  ![img_3432](https://cloud.githubusercontent.com/assets/18444618/25657895/044f9736-2ff8-11e7-8752-721977766cfe.JPG)
+
+
+
 
 
 ## Project Description
