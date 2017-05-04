@@ -98,7 +98,7 @@ void onTimerClick() {
     return;
   }
 
-  DEBUG_PRINTLN("Manual pressed");
+  DEBUG_PRINTLN("Timer pressed");
 
   currentState = TIMER_BTN;
   ui.activateButton(currentState);

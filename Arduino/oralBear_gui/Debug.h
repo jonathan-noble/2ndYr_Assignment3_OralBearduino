@@ -6,7 +6,7 @@
 
 #ifdef DEBUG
 #include <HardwareSerial.h>
-#define DEBUG_PRINTLN(message)  {Serial.println(message);Serial.flush();}
+#define DEBUG_PRINTLN(message)  {Serial.println(message);Serial.flush();} // flush waits for the transmission of outgoing serial data to complete
 #define DEBUG_PRINT(message)  {Serial.print(message);Serial.flush();}
 #else
 #define DEBUG_PRINTLN(message)
