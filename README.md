@@ -9,6 +9,7 @@ sacrifice and most of all, love of what you are doing or learning to do. "
 [![Video](http://img.youtube.com/vi/L_IXU5uO1O4/0.jpg)](https://www.youtube.com/watch?v=L_IXU5uO1O4&t=5s"Video")
 
 
+
 ## Group Details
 | Name | Student No. | Student Email 
 | --- | --- | --- |
@@ -33,7 +34,7 @@ We then came up to the conclusion that we will use the platform of Arduino and d
       * ![img_3424](https://cloud.githubusercontent.com/assets/18444618/25657861/d7437686-2ff7-11e7-818e-778fa2030904.JPG)
     
 * __Wemos D1-mini with an ESP8266 WiFi Module__:
-     ![img_3432](https://cloud.githubusercontent.com/assets/18444618/25657895/044f9736-2ff8-11e7-8752-721977766cfe.JPG)
+![img_3432](https://cloud.githubusercontent.com/assets/18444618/25657895/044f9736-2ff8-11e7-8752-721977766cfe.JPG)
   * Vibration Switch Sensor
   * Resistor
   * Jumper Wires
@@ -50,7 +51,7 @@ With the objective in mind, our Android App - named after the project -  was mad
 * Developing an Android App with fragments on a Navigation Bar
 * Learn Arduino in C and C++; Arduino library functions
 * Understanding the hardwares of TFT LCD screen i.e. Touchpoint and Wemos D1-Mini i.e. ESP8266 libraries
-* Usage of base64 for encoding username and password from the SMTP server
+* Usage of base64 from base64encode.org for encoding username and password from the SMTP smtp2go.com server
 * Git fetching-> merging/rebasing from an upstream branch was also another challenge in the beginning
 
 ## Features
@@ -68,11 +69,19 @@ With the objective in mind, our Android App - named after the project -  was mad
       ![email](https://cloud.githubusercontent.com/assets/18444618/25658367/6ac666e6-2ffa-11e7-8b78-7e3718481949.JPG)
       ![tut](https://cloud.githubusercontent.com/assets/18444618/25658365/6ac221a8-2ffa-11e7-9dbc-6d298329c59a.JPG)
 
-* Wemos D1- Mini:
+* Wemos D1-Mini:
   * The controller uses the ESP8266 to send an email once the vibration switch sensor reads an analogue input
   * C/C++ header files used:
-    - checkEmail.cpp/h for the responseCode to check availability of network. It also has the function to send the Email through the encoded base64 SMTP server when vibration has been detected
-  
+    - checkEmail.cpp/h consists of the responseCode to check availability of network. It also has the function to send the Email through the encoded SMTP username with the usage of base64. The screenshots provides the necessary requirements in underline to get the server connection to fully function. 
+
+  * Wemos D1-Mini Procedure Screenshots:
+
+
+![ser2](https://cloud.githubusercontent.com/assets/18444618/25829064/e50bdf3a-344b-11e7-8bbb-b9e984c9f848.png)
+![ser1](https://cloud.githubusercontent.com/assets/18444618/25829065/e50c30b6-344b-11e7-9585-4165a8995346.png)
+
+The generated base64 is then implemented in our code! Then voila! Magic is made by IoT!
+![ser3](https://cloud.githubusercontent.com/assets/18444618/25829063/e506278e-344b-11e7-8ce1-dfa192f0d862.png)
 
 * TFT LCD Screen
   * Tips & Advices on Splash Screens
@@ -83,7 +92,7 @@ With the objective in mind, our Android App - named after the project -  was mad
     - Debug.h for debugging purposes
     - UI.cpp/h for the splash screens and the UI design of the screen
 
-*LCD Screen screenshots:
+  * LCD Screen screenshots:
 
 ![img_0017](https://cloud.githubusercontent.com/assets/18444618/25666713/33d12d50-3019-11e7-880b-09b8921300f9.JPG)
 ![img_0019](https://cloud.githubusercontent.com/assets/18444618/25666709/33886700-3019-11e7-995f-7e99ad53199d.JPG)
